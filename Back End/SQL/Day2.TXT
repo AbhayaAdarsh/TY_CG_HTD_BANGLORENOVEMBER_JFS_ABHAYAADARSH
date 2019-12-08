@@ -1,0 +1,256 @@
+SQL> SELECT *
+  2  FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7844 NITIN      SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> SPOOL OFF
+SQL> SELECT *
+  2  FROM SEPT;
+FROM SEPT
+     *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SQL> ED/
+
+SQL> CL SCR
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT *
+  2* FROM SEPT
+SQL> 
+SQL> CL SCR
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT EMPNO,ENAME,JOB,SAL
+  2* FROM EMP
+SQL> /
+
+     EMPNO ENAME      JOB              SAL                                                          
+---------- ---------- --------- ----------                                                          
+      7369 SMITH      CLERK            800                                                          
+      7499 ALLEN      SALESMAN        1600                                                          
+      7521 WARD       SALESMAN        1250                                                          
+      7566 JONES      MANAGER         2975                                                          
+      7654 MARTIN     SALESMAN        1250                                                          
+      7698 BLAKE      MANAGER         2850                                                          
+      7782 CLARK      MANAGER         2450                                                          
+      7788 SCOTT      ANALYST         3000                                                          
+      7839 KING       PRESIDENT       5000                                                          
+      7844 NITIN      SALESMAN        1500                                                          
+      7876 ADAMS      CLERK           1100                                                          
+      7900 JAMES      CLERK            950                                                          
+      7902 FORD       ANALYST         3000                                                          
+      7934 MILLER     CLERK           1300                                                          
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT DISTINCT EMPNO,ENAME,JOB,SAL
+  2* FROM EMP
+SQL> /
+
+     EMPNO ENAME      JOB              SAL                                                          
+---------- ---------- --------- ----------                                                          
+      7782 CLARK      MANAGER         2450                                                          
+      7369 SMITH      CLERK            800                                                          
+      7654 MARTIN     SALESMAN        1250                                                          
+      7788 SCOTT      ANALYST         3000                                                          
+      7566 JONES      MANAGER         2975                                                          
+      7844 NITIN      SALESMAN        1500                                                          
+      7902 FORD       ANALYST         3000                                                          
+      7934 MILLER     CLERK           1300                                                          
+      7698 BLAKE      MANAGER         2850                                                          
+      7876 ADAMS      CLERK           1100                                                          
+      7499 ALLEN      SALESMAN        1600                                                          
+      7521 WARD       SALESMAN        1250                                                          
+      7839 KING       PRESIDENT       5000                                                          
+      7900 JAMES      CLERK            950                                                          
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT DISTINCT SAL
+  2* FROM EMP
+SQL> /
+
+       SAL                                                                                          
+----------                                                                                          
+      2450                                                                                          
+      5000                                                                                          
+      1300                                                                                          
+      1250                                                                                          
+      2850                                                                                          
+      2975                                                                                          
+      1100                                                                                          
+      3000                                                                                          
+       800                                                                                          
+      1600                                                                                          
+      1500                                                                                          
+       950                                                                                          
+
+12 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT DISTINCT SAL,EMPNO
+  2* FROM EMP
+SQL> /
+
+       SAL      EMPNO                                                                               
+---------- ----------                                                                               
+      2975       7566                                                                               
+      2450       7782                                                                               
+      1100       7876                                                                               
+      1250       7521                                                                               
+      1500       7844                                                                               
+      1250       7654                                                                               
+      5000       7839                                                                               
+      1300       7934                                                                               
+      1600       7499                                                                               
+      3000       7788                                                                               
+       950       7900                                                                               
+      2850       7698                                                                               
+      3000       7902                                                                               
+       800       7369                                                                               
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT EMPNO,DISTINCT SAL
+  2* FROM EMP
+SQL> /
+SELECT EMPNO,DISTINCT SAL
+             *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> SELECT SAL * 12
+  2  FROM EMP;
+
+    SAL*12                                                                                          
+----------                                                                                          
+      9600                                                                                          
+     19200                                                                                          
+     15000                                                                                          
+     35700                                                                                          
+     15000                                                                                          
+     34200                                                                                          
+     29400                                                                                          
+     36000                                                                                          
+     60000                                                                                          
+     18000                                                                                          
+     13200                                                                                          
+     11400                                                                                          
+     36000                                                                                          
+     15600                                                                                          
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SAL * 12 AS ANNUAL_SALARY
+  2* FROM EMP
+SQL> /
+
+ANNUAL_SALARY                                                                                       
+-------------                                                                                       
+         9600                                                                                       
+        19200                                                                                       
+        15000                                                                                       
+        35700                                                                                       
+        15000                                                                                       
+        34200                                                                                       
+        29400                                                                                       
+        36000                                                                                       
+        60000                                                                                       
+        18000                                                                                       
+        13200                                                                                       
+        11400                                                                                       
+        36000                                                                                       
+        15600                                                                                       
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SAL * 12 ANNUAL_SALARY
+  2* FROM EMP
+SQL> /
+
+ANNUAL_SALARY                                                                                       
+-------------                                                                                       
+         9600                                                                                       
+        19200                                                                                       
+        15000                                                                                       
+        35700                                                                                       
+        15000                                                                                       
+        34200                                                                                       
+        29400                                                                                       
+        36000                                                                                       
+        60000                                                                                       
+        18000                                                                                       
+        13200                                                                                       
+        11400                                                                                       
+        36000                                                                                       
+        15600                                                                                       
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SAL * 12 "ANNUAL SALARY"
+  2* FROM EMP
+SQL> /
+
+ANNUAL SALARY                                                                                       
+-------------                                                                                       
+         9600                                                                                       
+        19200                                                                                       
+        15000                                                                                       
+        35700                                                                                       
+        15000                                                                                       
+        34200                                                                                       
+        29400                                                                                       
+        36000                                                                                       
+        60000                                                                                       
+        18000                                                                                       
+        13200                                                                                       
+        11400                                                                                       
+        36000                                                                                       
+        15600                                                                                       
+
+14 rows selected.
+
+SQL> SPOOL OFF

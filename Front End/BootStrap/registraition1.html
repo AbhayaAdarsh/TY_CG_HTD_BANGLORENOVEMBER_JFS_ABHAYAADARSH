@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body{
+        background-image: url('./img4.jpg');
+        background-size:cover;
+    }
+    h3{
+        padding:50 px;
+        font-size:50 px;
+    }
+    form{
+        margin: 0%;
+        width:30%;
+        height: 100%;
+        border: 2px solid  pink;
+        background-color:lightgray;
+        background-size:cover ;
+    }
+    
+    </style>
+</head>
+<body>
+        <center>
+        <form action="#" method="POST" novalidate>
+            
+                <!-- first name:<input type="text" name="fname"  value=" Abhaya" minlength="4" maxlength="6" readonly><br> -->
+                
+                <fieldset>
+                    <legend>REGISTRATION DETAILS</legend>
+
+
+                 <label for=" sky ">FIRST NAME</label> 
+                 <input type="text" name="fname" id="sky" minlength="4" maxlength="5" ><br><br>
+            
+                last name:<input type="text" name="fname" value=""+><br><br>
+                Password :<input type="password" name="pwd" placeholder="enter your password" required pattern="Abhaya@123"><br><br>
+                Email:<input type="email" name="" id=""><br><br>
+                URL:<input type="url" name="homepage" id=""><br><br>
+                number:<input type="number" name="" id="" min="10" max="100" step="-2"><br><br>
+                <input type="submit" value=" submit">
+                <input type="reset" name="" id=""><br><br>
+                DOB:<input type="date" name="" id=""><br><br>
+            
+                
+                    </fieldset>
+            
+                <fieldset>
+                    <legend>OPTIONS</legend><br><br>
+                <input type="radio" name="gender" value="Male">MALE <br><br>
+                <input type="radio" name="gender" value="Female" checked>FEMALE<br><br>
+            
+                </fieldset> <span>
+            <!---Multiple options-->
+
+
+                Java:   <input type="checkbox" name="lang" value="Java"><br><br>
+                Sql:    <input type="checkbox" name="lang" value="Sql"><br><br>
+                WebTech:<input type="checkbox" name="lang" value="WebTech"></span> <br><br>
+            
+                <button>submit</button> <br><br>
+                <input type="button" value="click here!!"> <br><br>
+
+                <input type="file" name="upload a file" id=""> <br><br>
+            
+               <div> Write about yourself: <br><br>
+                <textarea name="" id="" cols="30" rows="5"></textarea></div>
+                
+               <div>Why we hire you: <br><br>
+                <textarea name="" id="" cols="30" rows="5"></textarea></div>
+
+                <br>Language Known:<input list="languages">
+                <datalist id="languages">
+                <option value="kannada"></option>
+                <option value="english"></option>
+                <option value="hindi"></option>
+                <option value="tamil"></option>
+                <option value="telgue"></option>
+                </datalist> <br>
+
+                <br><button>Register</button>
+
+            </form> <br>
+
+            <a href="./Assignment-3.html"> HOME </a>
+            
+        
+        </body>
+</html>

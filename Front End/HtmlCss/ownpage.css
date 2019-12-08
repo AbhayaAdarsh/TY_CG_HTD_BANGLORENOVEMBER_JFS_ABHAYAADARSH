@@ -1,0 +1,12 @@
+div{
+    text-decoration: none;
+}
+img{
+    border-radius:80% ;
+    box-shadow:0 0 12px black;
+}
+div{
+    border: solid black;
+    width: 30%;
+    height: 300;
+}
