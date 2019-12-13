@@ -1,0 +1,43 @@
+package com.cape.phonesimulator;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class SearchInfo {
+	
+	
+		
+	List<Integer> l1=new ArrayList<Integer>();
+	l1.add(1);
+	l1.add(2);
+	l1.add(3);
+	l1.add(4);
+	System.out.println(l1);
+	
+	ArrayList <String> al1=new ArrayList<String>();
+	al1.add("Mia");
+	al1.add("Sia");
+	al1.add("Nia");
+	al1.add("Gia");
+	System.out.println(al1);
+	
+	for(int i1:l1)
+	{
+		System.out.println(i1);
+	}
+	System.out.println("----------------------");
+	System.out.println("Iterator method");
+	Iterator<String> itr =al1.iterator();
+	while(itr.hasNext())
+	{
+		System.out.println(itr.next());
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+	System.out.println("----------------------");
+}
+
+}

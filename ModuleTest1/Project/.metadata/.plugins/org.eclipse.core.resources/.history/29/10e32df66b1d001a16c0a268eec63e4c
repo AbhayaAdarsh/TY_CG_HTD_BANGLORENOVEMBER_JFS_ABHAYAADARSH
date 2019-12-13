@@ -1,0 +1,122 @@
+package com.cape.phonesimulator;
+
+		import java.io.FileReader;
+		import java.sql.Connection;
+		import java.sql.DriverManager;
+		import java.sql.PreparedStatement;
+		import java.sql.ResultSet;
+		import java.sql.Statement;
+		import java.util.ArrayList;
+		import java.util.List;
+		import java.util.Properties;
+
+		public class SearchInfo implements Search
+		{
+
+		    FileReader reader;
+			Properties prop ;
+			private ResultSet rs;
+			
+		public SearchInfo()
+		{
+		try 
+		{
+			reader=new FileReader("db.properties");
+			prop=new Properties();
+			prop.load(reader);
+			Class.forName(prop.getProperty("mainClass"));
+
+		} 
+		catch (Exception e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+		@Override
+		public List<AllContact> getAllContact() 
+		{
+		List<AllContact> list=new ArrayList<AllContact>();
+		try
+		{
+				Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"),
+				                  prop.getProperty("dbUser"),prop.getProperty("dbPassword"));
+				Statement stmt=conn.createStatement();
+				ResultSet rs=stmt.executeQuery(prop.getProperty(null));
+				
+		}
+
+		while(rs.next())
+		{
+			AllContact contact=new AllContact();
+			contact.setContactNumber(rs.getInt(1));
+			contact.setContactname(rs.getString(2));
+			contact.setEmail(rs.getString(3));
+			list.add(contact);
+			
+		}
+
+		return list;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+		}
+
+		@Override
+		public UserBean userLogin(String username, String password)
+		{
+		// TODO Auto-generated method stub
+		return null;
+		}
+
+		@Override
+		public boolean updateUser(int userId, String password, String email)
+		{
+		// TODO Auto-generated method stub
+		return false;
+		}
+
+		@Override
+		public boolean insertUser(UserBean user)
+		{
+		try(Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"),
+		        prop.getProperty("dbUser"),prop.getProperty("dbPassword"));          
+				PreparedStatement pstmt=conn.prepareStatement(prop.getProperty("insertQuery"));
+
+				{
+				pstmt.setInt(1, user.getUserid());
+				pstmt.setString(2,user.getUsername());
+				pstmt.setString(3, user.getEmail());
+				pstmt.setString(4,user.getPassword());
+		    
+				int count=pstmt.executeUpdate();
+				
+				if(count > 0)
+				{
+					return true;
+				}
+				} 
+		catch (Exception e) 
+		{
+		  e.printStackTrace();
+		}
+		return false;
+		}
+
+		@Override
+		public boolean deleteUser(int userId, String password) 
+		{
+		// TODO Auto-generated method stub
+		return false;
+		}
+
+			
+		}
+
+		
+	
+	}
+}

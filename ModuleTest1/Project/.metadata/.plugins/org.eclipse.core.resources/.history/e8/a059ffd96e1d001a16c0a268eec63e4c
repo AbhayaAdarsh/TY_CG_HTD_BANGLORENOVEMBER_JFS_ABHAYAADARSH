@@ -1,0 +1,12 @@
+package com.cape.phonesimulator;
+
+import java.util.List;
+
+public interface Search {
+
+	List<AllContact> getAllContact();
+
+	boolean updateAllContact(String Contactname, int ContactNumber);
+
+	
+}

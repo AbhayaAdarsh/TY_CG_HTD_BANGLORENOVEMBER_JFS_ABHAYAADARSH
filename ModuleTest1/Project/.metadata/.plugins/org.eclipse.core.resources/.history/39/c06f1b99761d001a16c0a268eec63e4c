@@ -1,0 +1,9 @@
+Properties com.cape.phonesimulator
+dbUrl=jdbc:mysql://127.0.0.1:3306/AllContact
+dbUser=root
+dbPassword=root
+query1=select * from AllContact
+query2=select * from AllContact where name=?
+insertQuery=insert into AllContact values(?,?,?)
+deleteQuery=delete from AllContact where name=?
+UpdateQuery=update AllContact set number=?,groups=? and name=?

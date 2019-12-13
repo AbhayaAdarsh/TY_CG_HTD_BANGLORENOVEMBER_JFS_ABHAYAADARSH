@@ -1,0 +1,13 @@
+package com.cape.phonesimulator;
+
+import java.util.List;
+
+public interface Search {
+
+	List<AllContact> getAllContact();
+
+	AllContact contactAdd(String username, String password);
+
+	boolean insertContact(AllContact user);
+
+}

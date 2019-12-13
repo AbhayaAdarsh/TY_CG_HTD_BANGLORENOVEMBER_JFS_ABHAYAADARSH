@@ -1,0 +1,31 @@
+package com.cape.phonesimulator;
+
+public class AllContact {
+	
+	int name;
+	int number;
+	public AllContact(int name, int number) {
+		super();
+		this.name = name;
+		this.number = number;
+	}
+	public int getName() {
+		return name;
+	}
+	public void setName(int name) {
+		this.name = name;
+	}
+	public int getNumber() {
+		return number;
+	}
+	public void setNumber(int number) {
+		this.number = number;
+	}
+	@Override
+	public String toString() {
+		return "AllContact [name=" + name + ", number=" + number + "]";
+	}
+	public static void main(String[] args) {
+		
+	}
+}

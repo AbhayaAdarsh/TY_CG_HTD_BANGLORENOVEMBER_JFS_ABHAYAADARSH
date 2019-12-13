@@ -1,0 +1,9 @@
+package com.cape.phonesimulator;
+
+import java.util.List;
+
+public interface Search {
+
+	List<AllContact> getAllContact();
+
+}
