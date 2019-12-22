@@ -1,0 +1,121 @@
+package com.capge.flipkart.dao;
+
+import java.io.FileReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
+import com.capge.flipkart.bean.ProductBean;
+
+public class ProductDaoImpl implements ProductDao {
+	
+	FileReader reader;
+	Properties prop;
+	ProductBean product;
+
+	public ProductDaoImpl()
+	{
+		try {
+			reader=new FileReader("data.properties");
+			prop=new Properties();
+			prop.load(reader);
+			product=new ProductBean();
+			Class.forName(prop.getProperty("driverClass"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public boolean addProduct(ProductBean product) {
+		try(Connection conn=DriverManager.getConnection(prop.getProperty("dbUrl"),prop.getProperty("dbUser"),prop.getProperty("dbPassword"));
+				PreparedStatement pstmt=conn.prepareStatement(prop.getProperty("insertQuery"));){	
+			pstmt.setInt(1, product.getPid());
+			pstmt.setString(2, product.getPname());
+			pstmt.setDouble(3, product.getPcost());
+			pstmt.setString(4, product.getPcolor());
+			pstmt.setString(5, product.getDescription());
+			pstmt.setInt(6, product.getPno());
+			int count=pstmt.executeUpdate();
+			if(count>0){
+				return true;
+			}
+		}catch(Exception e)	{
+			System.out.println(e.getMessage());
+		}
+		return false;
+	}
+	
+	public boolean deleteProduct(String pname) {
+		try(Connection conn=DriverManager.getConnection(prop.getProperty("dbUrl"),prop.getProperty("dbUser"),prop.getProperty("dbPassword"));
+				PreparedStatement pstmt=conn.prepareStatement(prop.getProperty("deleteQuery"));	) {
+			pstmt.setString(1, pname);
+			int count=pstmt.executeUpdate();
+			if(count>0)	{
+				return true;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+		
+	public boolean editProduct(ProductBean product) {
+		try(Connection conn=DriverManager.getConnection(prop.getProperty("dbUrl"),prop.getProperty("dbUser"),prop.getProperty("dbPassword"));
+				PreparedStatement pstmt=conn.prepareStatement(prop.getProperty("updateQuery"));	)	{
+			pstmt.setString(3, product.getPname());
+			pstmt.setLong(1, product.getPid());
+			pstmt.setString(2, product.getPcolor());
+			int count=pstmt.executeUpdate();
+			if(count>0){
+				return true;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public ProductBean getProduct(String pname) {
+   List<ProductBean> list=new ArrayList<ProductBean>();
+		
+		try{
+			Connection conn=DriverManager.getConnection(prop.getProperty("dbUrl"),prop.getProperty("dbUser"),prop.getProperty("dbPassword"));
+				PreparedStatement pstmt=conn.prepareStatement(prop.getProperty("searchQuery"));
+				
+				ResultSet rs=pstmt.executeQuery();		
+			pstmt.setString(1, product.getPname());
+			
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+
+	@Override
+	public List<ProductBean> getAllProduct() {
+		List<ProductBean> list=new ArrayList<ProductBean>();
+		try(	Connection conn=DriverManager.getConnection(prop.getProperty("dbUrl"),prop.getProperty("dbUser"),prop.getProperty("dbPassword"));
+				Statement stmt=conn.createStatement();
+				ResultSet rs=stmt.executeQuery(prop.getProperty("query1"));		){
+			while(rs.next())			{
+				product=new ProductBean();
+				product.setPname(rs.getString(1));
+				product.setPno(rs.getInt(2));
+				product.setDescription(rs.getString(3));
+				list.add(product);
+			}
+			return list; 
+		}catch(Exception e)		{
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+}

@@ -1,0 +1,5 @@
+package com.capge.flipkart.factory;
+
+public class ProductManager {
+
+}

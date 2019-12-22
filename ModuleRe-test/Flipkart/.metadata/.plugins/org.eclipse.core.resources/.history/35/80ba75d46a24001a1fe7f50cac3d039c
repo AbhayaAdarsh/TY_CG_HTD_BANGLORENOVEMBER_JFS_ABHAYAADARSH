@@ -1,0 +1,29 @@
+package com.capge.flipkart.dao;
+
+import java.util.List;
+
+import com.capge.flipkart.bean.ProductBean;
+
+public class ProductDaoImpl {
+
+	public boolean addProduct(ProductBean product) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean deleteProduct(String pname) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean editProduct(ProductBean product) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public List<ProductBean> getAllProduct() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

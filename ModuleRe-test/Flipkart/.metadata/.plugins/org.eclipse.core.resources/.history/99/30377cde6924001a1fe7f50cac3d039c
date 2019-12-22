@@ -1,0 +1,12 @@
+package com.capge.flipkart.dao;
+
+import com.capge.flipkart.bean.ProductBean;
+
+public class ProductDaoImpl {
+
+	public boolean addProduct(ProductBean product) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

@@ -1,0 +1,51 @@
+package com.capge.flipkart.bean;
+
+public class ProductBean implements Serializable {
+	private int pid;
+	private String pname;
+	private double pcost;
+	private String pcolor;
+	private String description;
+	private int pno;
+	public int getPid() {
+		return pid;
+	}
+	public void setPid(int pid) {
+		this.pid = pid;
+	}
+	public String getPname() {
+		return pname;
+	}
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+	public double getPcost() {
+		return pcost;
+	}
+	public void setPcost(double pcost) {
+		this.pcost = pcost;
+	}
+	public String getPcolor() {
+		return pcolor;
+	}
+	public void setPcolor(String pcolor) {
+		this.pcolor = pcolor;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public int getPno() {
+		return pno;
+	}
+	public void setPno(int pno) {
+		this.pno = pno;
+	}
+	@Override
+	public String toString() {
+		return "ProductBean [pid=" + pid + ", pname=" + pname + ", pcost=" + pcost + ", pcolor=" + pcolor
+				+ ", description=" + description + ", pno=" + pno + "]";
+	}
+}

@@ -1,0 +1,5 @@
+package com.capge.flipkart.dao;
+
+public class ProductDaoImpl {
+
+}
