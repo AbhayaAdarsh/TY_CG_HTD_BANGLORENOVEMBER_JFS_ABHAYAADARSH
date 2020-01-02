@@ -1,0 +1,35 @@
+package com.capge.empspringmvc.beans;
+
+import java.util.List;
+
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name="employee_info")
+public class EmployeeBean {
+	@Id
+	@Column
+	@GeneratedValue //automatically generate id
+	private int id;
+	@Column
+	private String name;
+	@Column(unique=true, nullable =false)//make email id unique we will choose this and make it as true
+	private String email;
+	@Column
+	private String password;
+	@OneToMany(cascade =CascadeType.ALL,mappedBy ="bean")
+	private List<EmployeeAddressBean> addressBeans;
+	
+	
+	
+}

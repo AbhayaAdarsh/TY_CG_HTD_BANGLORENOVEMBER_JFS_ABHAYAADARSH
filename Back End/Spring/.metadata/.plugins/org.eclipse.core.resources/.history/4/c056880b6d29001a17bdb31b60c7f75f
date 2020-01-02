@@ -1,0 +1,38 @@
+package com.capgemini.productspringboot.dao;
+
+import java.util.List;
+
+import com.capgemini.productspringboot.dto.ProductBean;
+
+public interface dao {
+
+	static boolean addProduct(ProductBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	static ProductBean getProduct(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	static List<ProductBean> getAllProduct() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	static boolean updateProduct(int id, ProductBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	static boolean deleteProduct(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
+
+	
+
+}

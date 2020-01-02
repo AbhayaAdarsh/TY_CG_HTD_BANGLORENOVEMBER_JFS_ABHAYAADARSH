@@ -1,0 +1,5 @@
+package com.capge.empspringmvc.dao;
+
+public class EmployeeDaoImpl {
+
+}

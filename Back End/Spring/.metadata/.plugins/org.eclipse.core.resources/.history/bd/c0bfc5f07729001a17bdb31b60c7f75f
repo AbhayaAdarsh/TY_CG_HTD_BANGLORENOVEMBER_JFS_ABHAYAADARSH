@@ -1,0 +1,36 @@
+package com.capgemini.productspringboot.service;
+
+import java.util.List;
+
+import com.capgemini.productspringboot.dao.ProductDAO;
+import com.capgemini.productspringboot.dto.ProductBean;
+import com.capgemini.productspringboot.exception.ProductException;
+
+public class ProductServiceImpl implements ProductService{
+
+	@Override
+	public boolean addProduct(ProductBean bean) {
+		return dao.addProduct(bean);
+	}
+
+	@Override
+	public ProductBean getProduct(int id) {
+		return ProductDAO.getProduct(id);
+	}
+
+	@Override
+	public List<ProductBean> getAllProduct() {
+		return ProductDAO.getAllProduct();
+	}
+
+	@Override
+	public boolean updateProduct(int id, ProductBean bean) {
+		return ProductDAO.updateProduct(id,bean);
+	}
+
+	@Override
+	public boolean deleteProduct(int id) throws ProductException {
+		return dao.deleteProduct(id);
+	}
+
+}

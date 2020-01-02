@@ -1,0 +1,36 @@
+package com.capge.empspringmvc.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.capge.empspringmvc.bean.EmployeeBean;
+import com.capge.empspringmvc.dao.EmployeeDAO;
+
+public class EmployeeServiceImpl implements EmployeeService{
+	
+	@Autowired //in place of making object of EmployeeDao we write this
+	private EmployeeDAO dao;
+
+	@Override
+	public EmployeeBean auth(String email, String password) {
+		
+		return null;
+	}
+
+	@Override
+	public boolean register(EmployeeBean bean) {
+		return false;
+	}
+
+	@Override
+	public List<EmployeeBean> getEmployees(String key) {
+		return null;
+	}
+
+	@Override
+	public boolean changePassword(int id, String password) {
+		return false;
+	}
+
+}

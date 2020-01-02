@@ -1,0 +1,5 @@
+package com.capge.empspringmvc.bean;
+
+public class EmployeeBean {
+
+}

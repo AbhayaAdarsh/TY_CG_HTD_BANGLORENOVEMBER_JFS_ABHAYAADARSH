@@ -1,0 +1,5 @@
+package com.capge.empspringmvc.config;
+
+public class OrmConfig {
+
+}

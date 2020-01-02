@@ -1,0 +1,16 @@
+package com.capgemini.productspringboot.dao;
+
+import com.capgemini.productspringboot.dto.ProductBean;
+
+public interface dao {
+
+	static boolean addProduct(ProductBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
+
+	
+
+}

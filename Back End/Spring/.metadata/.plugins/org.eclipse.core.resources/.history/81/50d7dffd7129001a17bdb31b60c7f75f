@@ -1,0 +1,5 @@
+package com.capgemini.productspringboot.exception;
+
+public class ProductException extends Exception {
+
+}

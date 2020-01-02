@@ -1,0 +1,20 @@
+package com.capgemini.productspringboot.dao;
+
+import java.util.List;
+
+import com.capgemini.productspringboot.dto.ProductBean;
+
+public interface ProductDAO {
+
+	static boolean addProduct(ProductBean bean);
+	
+	static ProductBean getProduct(int id); 
+
+	static List<ProductBean> getAllProduct(); 
+
+	static boolean updateProduct(int id, ProductBean bean);
+
+	static boolean deleteProduct(int id);
+	
+
+}
