@@ -1,0 +1,56 @@
+package com.capgemini.mywebapp.servlets;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.capgemini.mywebapp.bean.EmployeeInfoBean;
+import com.capgemini.mywebapp.services.EmployeeServiceImpl;
+import com.capgemini.mywebapp.services.EmployeeServices;
+@WebServlet("/updateEmployee")
+public class UpdateEmployeeServlet extends HttpServlet {
+
+	private EmployeeServices service= new EmployeeServiceImpl();
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session=req.getSession(false);
+		if(session != null) {
+			//Valid Session
+			//Get the form data
+			int empld=Integer.parseInt(req.getParameter("empId"));
+			String name=req.getParameter("name");
+			String ageVal=(req.getParameter("age"));
+			String salaryVal=(req.getParameter("salary"));
+			String designation=req.getParameter("designation");
+			String password=req.getParameter("password");
+			
+			
+			EmployeeInfoBean employeeInfoBean=new EmployeeInfoBean();
+			employeeInfoBean.setName(name);
+			if(ageVal != null && !ageVal.isEmpty()) {
+				int age=Integer.parseInt(ageVal);
+				employeeInfoBean.setAge(age);
+			}
+			employeeInfoBean.setDesignation(designation);
+			employeeInfoBean.setPassword(password);
+
+			boolean isUpdated= service.updateEmployee(employeeInfoBean);
+			if(isUpdated) {
+				req.setAttribute("msg","Employee Details Updated Successfully.");
+			}else {
+				req.setAttribute("msg","Updated Failed! Please Try Again.");
+			}
+			req.getRequestDispatcher("./updateEmpJsp").forward(req, resp);
+		}else {
+			//Invalid Session
+			req.setAttribute("msg","please login first");
+			req.getRequestDispatcher("./loginForm").forward(req, resp);
+		}
+	}//end of doPost
+}//end of class

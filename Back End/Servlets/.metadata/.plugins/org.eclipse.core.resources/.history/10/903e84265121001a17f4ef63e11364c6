@@ -1,0 +1,34 @@
+<%@page import="com.capgemini.mywebapp.bean.EmployeeInfoBean"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%page session="false"; %>
+
+<% EmployeeInfoBean employeeInfoBean = ( EmployeeInfoBean) request.getAttribute("empoyeeInfoBean");%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<fieldset>
+	<legend>Search Employee</legend>
+	<form action="./getEmployee" method="get">
+	Employee ID:<input type="number" name="empId" required ><br>
+	<input type="submit" value="search">
+	</form>
+	</fieldset>
+	<br><br>
+	
+	<%if(employeeInfoBean == null) {%>
+	<h3 style="color: red;">Employee ID Not Found</h3>
+	<% } else { %>
+	<h3 style="color: green;">Details for Employee Id <%=employeeInfoBean.getEmpId()%></h3><br>
+	Employee Name=<%=employeeInfoBean.getName() %><br>
+	Age = <%=employeeInfoBean.getAge()%><br>
+	Salary = <%=employeeInfoBean.getSalary() %><br>
+	Designation = <%=employeeInfoBean.getDesignation() %>
+	<% } %>
+</body>
+</html>

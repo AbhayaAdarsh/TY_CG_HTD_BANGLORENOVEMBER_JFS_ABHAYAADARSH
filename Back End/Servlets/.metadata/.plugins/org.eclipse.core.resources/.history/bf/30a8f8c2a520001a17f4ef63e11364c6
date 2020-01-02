@@ -1,0 +1,58 @@
+package com.capgemini.mywebapp.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.capgemini.mywebapp.bean.EmployeeInfoBean;
+import com.capgemini.mywebapp.dao.EmployeeDaoImpl;
+import com.capgemini.mywebapp.services.EmployeeServiceImpl;
+import com.capgemini.mywebapp.services.EmployeeServices;
+
+@WebServlet("/deleteEmployee")
+public class DeleteEmployeeServlet extends HttpServlet{
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		private EmployeeServices service = new EmployeeServiceImpl() ;
+	
+		
+		HttpSession session=req.getSession(true);
+		session.setAttribute("employeeInfoBean",employeeInfoBean);
+		
+		if(session!=null) {
+		//Valid Session
+		PrintWriter out=resp.getWriter();
+		out.println("<html>");
+		out.println("<body>");
+		
+		if(service.deleteEmployee(empId))
+		{
+			out.println("<h3 style>");
+			
+		}
+		
+		out.println("</body>");
+		out.println("</html>");
+		else {
+			//Invalid session
+			PrintWriter out=resp.getWriter();
+			out.println("<html>");
+			out.println("<body>");
+			out.println("<h3 style='color:red'>Invalid Credentials</h3>");
+			out.println("</body>");
+			out.println("</html>");
+			
+			req.getRequestDispatcher("./loginPage.html").include(req, resp);
+		}
+		
+		}//end of doGet
+
+}//end of class

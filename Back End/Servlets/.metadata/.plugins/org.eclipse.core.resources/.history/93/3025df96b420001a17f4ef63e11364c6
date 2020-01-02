@@ -1,0 +1,57 @@
+package com.capgemini.mywebapp.bean;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+@Data
+@Entity
+@Table
+public class EmployeeInfoBean {
+
+	@Id
+	@Column
+	private int empId;
+	@Column
+	private String name;
+	@Column
+	private double salary;
+	@Column
+	private int age;
+	@Column
+	private String password;
+	@Column
+	private String designation;
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public String getAge() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public String getSalary() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public String getDesignation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public int getempid() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	public void remove(Object employeeInfoBean1) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void contains(EmployeeInfoBean employeeInfoBean) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}//class End

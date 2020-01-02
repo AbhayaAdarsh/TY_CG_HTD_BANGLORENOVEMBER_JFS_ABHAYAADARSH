@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.persistence.Id"/>
+<fullyQualifiedTypeName name="javax.persistence.Column"/>
+<fullyQualifiedTypeName name="lombok.Data"/>
+<fullyQualifiedTypeName name="javax.persistence.Entity"/>
+<fullyQualifiedTypeName name="javax.persistence.Persistence"/>
+<fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
+<fullyQualifiedTypeName name="com.capgemini.mywebapp.dao.EmployeeDao"/>
+<fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
+<fullyQualifiedTypeName name="javax.servlet.http.Cookie"/>
+<fullyQualifiedTypeName name="javax.persistence.Query"/>
+<fullyQualifiedTypeName name="javax.servlet.ServletConfig"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="javax.persistence.EntityManagerFactory"/>
+<fullyQualifiedTypeName name="com.capgemini.mywebapp.dao.EmployeeDaoImpl"/>
+<fullyQualifiedTypeName name="java.lang.Double"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="net.bytebuddy.dynamic.scaffold.TypeWriter.FieldPool.Record"/>
+<fullyQualifiedTypeName name="com.capgemini.mywebapp.services.EmployeeServices"/>
+<fullyQualifiedTypeName name="java.security.Provider.Service"/>
+<fullyQualifiedTypeName name="com.capgemini.mywebapp.services.EmployeeServiceImpl"/>
+<fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+<fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="com.capgemini.mywebapp.bean.EmployeeInfoBean"/>
+<fullyQualifiedTypeName name="javax.persistence.EntityTransaction"/>
+<fullyQualifiedTypeName name="javassist.expr.NewArray"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,5 @@
+package com.capg.mywebapp.servlrtforjsps;
+
+public class LogoutServlet {
+
+}

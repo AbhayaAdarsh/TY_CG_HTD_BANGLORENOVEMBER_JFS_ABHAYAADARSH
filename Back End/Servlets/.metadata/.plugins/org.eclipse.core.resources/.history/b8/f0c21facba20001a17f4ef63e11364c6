@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<fieldset>
+<legand>Delete Employee</legand>
+<form action="./deleteEmployee" method="get">
+<table>
+Employee ID:<input type="number" name="empId" required><br>
+<input type="submit" name="delete" >
+</table>
+</fieldset>
+</body>
+</html>

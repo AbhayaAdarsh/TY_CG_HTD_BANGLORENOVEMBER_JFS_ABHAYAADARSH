@@ -1,0 +1,40 @@
+package com.capgemini.mywebapp.servlets;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.capgemini.mywebapp.bean.EmployeeInfoBean;
+import com.capgemini.mywebapp.services.EmployeeServiceImpl;
+import com.capgemini.mywebapp.services.EmployeeServices;
+
+@WebServlet("./deleteEmployee")
+public class DeleteEmployeeServletWithJsp extends HttpServlet{
+	private EmployeeServices service =new EmployeeServiceImpl();
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session= req.getSession(false);
+		if(session!=null) {
+			//Valid Session
+			int empld=Integer.parseInt(req.getParameter("empId"));
+			String name=req.getParameter("name");	
+			
+			EmployeeInfoBean employeeInfoBean=new EmployeeInfoBean();
+			employeeInfoBean.setName(name);
+			boolean isDeleted =service.deleteEmployee(employeeInfoBean);
+			req.setAttribute("employeeInfoBean",employeeInfoBean);//we will set attribute because we want to display the msg via jsppage on the same jsp page
+			req.getRequestDispatcher("./AddEmpJspForm.jsp").forward(req, resp);
+		}else{
+				//invalid session
+				req.setAttribute("msg","please login first");
+				req.getRequestDispatcher("./loginForm").forward(req, resp);
+			}
+		
+	}//end of doGet
+}//end of class

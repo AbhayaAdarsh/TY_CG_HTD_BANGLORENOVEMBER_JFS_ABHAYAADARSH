@@ -1,0 +1,43 @@
+package validation;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+
+public class Exp {
+	
+	public static void main(String[] args) {
+		
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter date (mm-dd-yyyy)");
+String date1=sc.nextLine();
+
+SimpleDateFormat format=new SimpleDateFormat("mm-dd-yyyy");
+
+
+try {
+	Date date = format.parse(date1);
+	String dateInput=format.format(date);
+	System.out.println(dateInput);
+	
+	Date d1=format.parse("14-02-2020");
+
+	if(d1.compareTo(date)>0) {
+		System.out.println("Date is Invalid ");
+	}
+	else if(d1.compareTo(date)<0) {
+		System.out.println("Date is Valid");
+	}
+	else if(d1.compareTo(date)==0) {
+		System.out.println("Date is Invalid *Same Dates");
+	}
+	
+	System.out.println("Your Input"+dateInput);
+	System.out.println("Limit is"+d1);
+	
+} catch (ParseException e) {
+	e.printStackTrace();
+}
+}
+}
