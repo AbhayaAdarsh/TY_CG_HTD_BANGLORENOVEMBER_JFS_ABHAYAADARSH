@@ -1,0 +1,128 @@
+package com.capgemini.retailermaintenancesystemapplication.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.capgemini.retailermaintenancesystemapplication.dao.ProductInfoDao;
+import com.capgemini.retailermaintenancesystemapplication.dto.ProductInfoBean;
+import com.capgemini.retailermaintenancesystemapplication.exception.ProductInfoException;
+
+@Service
+public class ProductInfoServiceImpl implements ProductInfoService{
+	
+		@Autowired
+		private ProductInfoDao dao;
+		
+		BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+		
+		@Override
+		public boolean addProductInfoProfile(ProductInfoBean bean) {
+			return dao.addProductInfoProfile(bean);;
+		}
+
+		@Override
+		public ProductInfoBean authProductInfo(int userid, String password) {
+			return dao.authProductInfo(userid,password);
+		}
+
+		@Override
+		public ProductInfoBean getProductInfo(int id) {
+			return dao.getProductInfo(id);
+		}
+
+		@Override
+		public boolean updatePassword(int id, String password) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public List<ProductInfoBean> getAllProduct(int id) throws ProductInfoException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		
+		
+}	
+		
+		
+		
+		
+		
+		
+		@Override
+		public boolean addProduct(ProductBean bean) {
+			
+		}
+
+		@Override
+		public ProductBean getProduct(int id) {
+			;
+		}
+
+		@Override
+		public List<ProductBean> getAllProduct() {
+			return dao.getAllProduct();
+		}
+
+		@Override
+		public boolean updateProduct(int id, ProductBean bean) {
+			return dao.updateProduct(id,bean);
+		}
+
+		@Override
+		public boolean deleteProduct(int id) throws ProductException {
+			return dao.deleteProduct(id);
+		}
+
+
+		 // this is a service layer we prefer this otherwise we will give @Component
+		public class EmployeeServiceImpl implements EmployeeService {
+
+			@Autowired // in place of making object of EmployeeDao we write this
+			private EmployeeDAO dao;
+
+			
+			
+			@Override
+			public EmployeeBean auth(String email, String password) {
+				
+				;
+			}
+
+			@Override
+			public boolean register(EmployeeBean bean) {//for encoding password
+				
+				String encodedPassword = encoder.encode(bean.getPassword());
+				bean.setPassword(encodedPassword);
+				
+				List<EmployeeAddressBean> addressBean = bean.getAddressBeans();
+				for (EmployeeAddressBean employeeAddressBean : addressBean) {
+					employeeAddressBean.setBean(bean);
+				}
+				return dao.register(bean);
+			}
+
+			@Override
+			public List<EmployeeBean> getEmployees(String key) {
+				return dao.getEmployees(key);
+			}
+
+			@Override
+			public boolean changePassword(int id, String password) {
+				return dao.changePassword(id,encoder.encode(password));//hashing part
+			}
+
+			@Override
+			public boolean deleteEmployee(int id) {
+				return dao.deleteEmployee(id);
+			}
+
+}
+
+
+		

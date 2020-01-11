@@ -1,0 +1,11 @@
+package com.capgemini.retailermaintenancesystemapplication.dao;
+
+import com.capgemini.retailermaintenancesystemapplication.dto.UserInfoBean;
+
+public interface UserInfoDao {
+
+	boolean addUserInfoProfile(UserInfoBean bean);
+
+	UserInfoBean getUserInfo(int id);
+
+}

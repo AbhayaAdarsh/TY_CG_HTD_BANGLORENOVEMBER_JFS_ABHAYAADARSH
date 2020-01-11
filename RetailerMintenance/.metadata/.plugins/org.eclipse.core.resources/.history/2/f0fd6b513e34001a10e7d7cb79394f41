@@ -1,0 +1,20 @@
+package com.capgemini.retailermaintenancesystemapplication.dto;
+
+public class ProductInfoBean {
+
+	@Entity
+	@Table(name="retailer_db")
+	public class ProductBean {
+		@Id
+		@Column
+		@GeneratedValue
+		private int id;
+		@Column(unique =true,nullable =false)
+		private String imageUrl;
+		@Column
+		private String name;
+		@Column
+		private double cost;
+		
+		getersetter
+}

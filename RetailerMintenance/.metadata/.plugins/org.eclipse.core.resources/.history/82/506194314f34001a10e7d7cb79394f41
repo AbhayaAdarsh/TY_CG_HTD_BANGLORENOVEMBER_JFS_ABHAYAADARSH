@@ -1,0 +1,11 @@
+package com.capgemini.retailermaintenancesystemapplication.dao;
+
+import com.capgemini.retailermaintenancesystemapplication.dto.OrderInfoBean;
+
+public interface OrderInfoDao {
+
+	boolean addOrderInfoProfile(OrderInfoBean bean);
+
+	OrderInfoBean getOrderInfo(int id);
+
+}

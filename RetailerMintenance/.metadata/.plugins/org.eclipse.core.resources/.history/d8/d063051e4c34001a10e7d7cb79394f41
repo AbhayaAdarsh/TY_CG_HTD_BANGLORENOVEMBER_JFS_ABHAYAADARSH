@@ -1,0 +1,5 @@
+package com.capgemini.retailermaintenancesystemapplication.dto;
+
+public class OrderInfoBean {
+
+}

@@ -1,0 +1,5 @@
+package com.capgemini.retailermaintenancesystemapplication.service;
+
+public interface UserInfoService {
+
+}

@@ -1,0 +1,35 @@
+package com.capgemini.retailermaintenancesystemapplication.service;
+
+@Service
+public class RetailerServiceImpl implements ProductInfoService{
+	
+		@Autowired
+		private ProductDAO dao;
+		
+		@Override
+		public boolean addProduct(ProductBean bean) {
+			return dao.addProduct(bean);
+		}
+
+		@Override
+		public ProductBean getProduct(int id) {
+			return dao.getProduct(id);
+		}
+
+		@Override
+		public List<ProductBean> getAllProduct() {
+			return dao.getAllProduct();
+		}
+
+		@Override
+		public boolean updateProduct(int id, ProductBean bean) {
+			return dao.updateProduct(id,bean);
+		}
+
+		@Override
+		public boolean deleteProduct(int id) throws ProductException {
+			return dao.deleteProduct(id);
+		}
+
+
+}

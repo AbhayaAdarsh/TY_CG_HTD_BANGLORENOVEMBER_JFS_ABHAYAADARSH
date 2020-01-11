@@ -1,0 +1,42 @@
+package com.capgemini.retailermaintenancesystemapplication.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
+
+import org.springframework.stereotype.Repository;
+
+import com.capgemini.retailermaintenancesystemapplication.dto.UserInfoBean;
+
+@Repository
+public class UserInfoDaoImpl implements UserInfoDao{
+
+	@PersistenceUnit
+	private EntityManagerFactory factory;
+
+	@Override
+	public boolean addUserInfoProfile(UserInfoBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public UserInfoBean getUserInfo(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean updatePassword(int email, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<UserInfoBean> getAllUser(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

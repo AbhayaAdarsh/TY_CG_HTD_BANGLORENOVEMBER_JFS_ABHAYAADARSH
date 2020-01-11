@@ -1,0 +1,27 @@
+package com.capgemini.retailermaintenancesystemapplication.dao;
+
+import java.util.List;
+
+import com.capgemini.retailermaintenancesystemapplication.dto.OrderInfoBean;
+
+public class OrderInfoDaoImpl implements OrderInfoDao{
+
+	@Override
+	public boolean addOrderInfoProfile(OrderInfoBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public OrderInfoBean getOrderInfo(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderInfoBean> getAllOrder(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

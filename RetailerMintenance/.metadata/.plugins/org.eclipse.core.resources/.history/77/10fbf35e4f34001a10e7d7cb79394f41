@@ -1,0 +1,110 @@
+package com.capgemini.retailermaintenancesystemapplication.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.TypedQuery;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Repository;
+
+import com.capgemini.retailermaintenancesystemapplication.dto.ProductInfoBean;
+import com.capgemini.retailermaintenancesystemapplication.exception.ProductInfoException;
+
+@Repository
+	public class ProductInfoDaoImpl implements ProductInfoDao{
+	
+
+	@PersistenceUnit
+	private EntityManagerFactory factory;
+
+		@Override
+		public boolean addProductInfoProfile(ProductInfoBean bean) {
+			
+			EntityManager manager=factory.createEntityManager();
+			EntityTransaction transaction=manager.getTransaction();
+			ProductInfoBean productInfoBean = new ProductInfoBean();
+			
+			productInfoBean.setId(bean.getId());
+			productInfoBean.setUserid(bean.getUserid());
+			productInfoBean.setName(bean.getName());
+			productInfoBean.setQuantity(bean.getQuantity());
+			productInfoBean.setDetails(bean.getDetails());
+			
+			transaction.begin();
+			try {
+				manager.persist(productInfoBean);
+				transaction.commit();
+				return true;
+			}catch (Exception e){
+			
+				e.printStackTrace();
+				throw new ProductInfoException("product already exists");
+			}
+		
+		}
+
+		@Override
+		public ProductInfoBean authProductInfo(int userid, String password) {
+			EntityManager manager=factory.createEntityManager();
+			String jpql="from ProductInfoBean where id=:id ";
+			TypedQuery<ProductInfoBean> query=manager.createQuery(jpql,ProductInfoBean.class); 
+			query.setParameter("id",userid);
+			
+			try {
+				ProductInfoBean bean=query.getSingleResult();
+				
+				//encryption method
+				BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+				if(encoder.matches(password, bean.getPassword())) {
+					return bean;
+				}else {
+					throw new ProductInfoException("Password Invalid");
+				}
+				//return bean;
+			}catch(Exception e) {
+				throw new ProductInfoException("Id Invalid");
+				}
+			}
+
+		@Override
+		public ProductInfoBean getProductInfo(int userid) {
+			String jpql1="from ProductBean where id=:id";
+			EntityManager manager1=factory.createEntityManager();
+			TypedQuery<ProductInfoBean> query1=manager1.createQuery(jpql1,ProductInfoBean.class);
+			query1.setParameter("id",userid);
+			try {
+				return query1.getSingleResult();
+			}catch(Exception e) {
+				e.printStackTrace();
+				throw new ProductInfoException("Product not found");
+			}
+		}
+
+		@Override
+		public boolean updatePassword(int userid2 , String password1) {
+			EntityManager manager1=factory.createEntityManager();
+			EntityTransaction transaction=manager1.getTransaction();
+			transaction.begin();
+			ProductInfoBean bean1= manager1.find(ProductInfoBean.class,userid2);
+			bean1.setPassword(bean1.getPassword());
+			bean1.setName(bean1.getName());
+			transaction.commit();
+			return true;
+		}
+
+		@Override
+		public List<ProductInfoBean> getAllProduct(int id) throws ProductInfoException {
+			String jpql="from EmployeeBean where id=:id";
+			EntityManager manager=factory.createEntityManager();
+			TypedQuery<ProductInfoBean> query=manager.createQuery(jpql,ProductInfoBean.class);
+			query.setParameter("id",id);
+			return query.getResultList();
+		}
+		
+		
+		
+	}

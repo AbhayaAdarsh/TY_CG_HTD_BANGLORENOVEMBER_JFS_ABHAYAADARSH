@@ -1,0 +1,15 @@
+package com.capgemini.retailermaintenancesystemapplication.service;
+
+public interface RetailerService {
+
+public boolean addProduct(ProductBean bean);
+	
+	public ProductBean getProduct(int id);
+
+	public List<ProductBean> getAllProduct();
+	
+	public boolean updateProduct(int id,ProductBean bean);
+	
+	public boolean deleteProduct(int id)throws ProductException;
+
+}

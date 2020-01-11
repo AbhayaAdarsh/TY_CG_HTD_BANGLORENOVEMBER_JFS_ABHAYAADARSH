@@ -1,0 +1,40 @@
+package com.capgemini.retailermaintenancesystemapplication.dto;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+
+public class OrderInfoBean {
+
+	@Id
+	@Column
+	@GeneratedValue
+	private int id;
+	@Id
+	@Column
+	private int userid;
+	@Id
+	@Column
+	private int productid;
+	public Object getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void setId(Object id2) {
+		// TODO Auto-generated method stub
+		
+	}
+	public Object getUserid() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public Object getProductid() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void setUserid(Object userid2) {
+		// TODO Auto-generated method stub
+		
+	}
+}

@@ -1,0 +1,15 @@
+package com.capgemini.retailermaintenancesystemapplication.controller;
+
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class RetailerControllerAdvice {
+
+	@ExceptionHandler(ProductException.class)
+	public ProductResponse handleProductException(ProductException e) {
+	ProductResponse productResponce = new ProductResponse();
+	productResponce.setStatusCode(501);
+	productResponce.setMessage("Exception");
+	productResponce.setDescription(e.getMessage());
+	return productResponce;
+}

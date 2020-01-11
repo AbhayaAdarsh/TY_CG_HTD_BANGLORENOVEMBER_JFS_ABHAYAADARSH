@@ -1,0 +1,12 @@
+1578723298125	Move 'HELP.md' to 'src'
+1578723772687	Delete element
+1578723888026	Delete element
+1578724980651	Rename type 'RetailerController'
+1578725000111	Rename compilation unit 'RetailerControllerAdvice.java'
+1578725036159	Rename type 'RetailerDao'
+1578725055044	Rename type 'RetailerDaoImpl'
+1578725071842	Rename compilation unit 'RetailerBean.java'
+1578725092199	Rename compilation unit 'RetailerResponce.java'
+1578725108713	Rename type 'RetailerException'
+1578725128721	Rename type 'RetailerService'
+1578725151456	Rename type 'RetailerServiceImpl'

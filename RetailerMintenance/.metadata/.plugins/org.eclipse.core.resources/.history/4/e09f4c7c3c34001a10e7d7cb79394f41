@@ -1,0 +1,5 @@
+package com.capgemini.retailermaintenancesystemapplication.dao;
+
+public interface RetailerDao {
+
+}

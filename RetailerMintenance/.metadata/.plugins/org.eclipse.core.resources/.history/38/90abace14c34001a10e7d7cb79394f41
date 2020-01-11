@@ -1,0 +1,11 @@
+package com.capgemini.retailermaintenancesystemapplication.dto;
+
+import java.util.List;
+
+public class UserInfoResponce {
+
+	private int pinCode;
+	private String address1;
+	private String address2;
+	private List<UserInfoBean> beans;
+}

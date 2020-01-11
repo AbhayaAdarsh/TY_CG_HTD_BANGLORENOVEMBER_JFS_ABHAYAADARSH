@@ -1,0 +1,11 @@
+package com.capgemini.retailermaintenancesystemapplication.dto;
+
+public class ProductInfoResponce {
+
+	private int statusCode;
+	private String message;
+	private String description;
+	private List<ProductBean> beans;
+	
+	gettersetter
+}

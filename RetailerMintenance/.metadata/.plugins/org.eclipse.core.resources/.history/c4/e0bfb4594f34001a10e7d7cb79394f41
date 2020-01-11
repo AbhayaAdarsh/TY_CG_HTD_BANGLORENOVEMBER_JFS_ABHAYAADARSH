@@ -1,0 +1,17 @@
+package com.capgemini.retailermaintenancesystemapplication.dao;
+
+import java.util.List;
+
+import com.capgemini.retailermaintenancesystemapplication.dto.OrderInfoBean;
+import com.capgemini.retailermaintenancesystemapplication.dto.ProductInfoBean;
+import com.capgemini.retailermaintenancesystemapplication.exception.ProductInfoException;
+
+public interface ProductInfoDao {
+
+public boolean addProductInfoProfile(ProductInfoBean bean);
+public ProductInfoBean authProductInfo(int userid,String password);
+public ProductInfoBean getProductInfo(int id);
+public boolean updatePassword(int id,String password);
+public List<ProductInfoBean> getAllProduct(int id)throws ProductInfoException;
+
+}

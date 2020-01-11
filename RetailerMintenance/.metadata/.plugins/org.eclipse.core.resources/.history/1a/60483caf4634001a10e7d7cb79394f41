@@ -1,0 +1,270 @@
+package com.capgemini.retailermaintenancesystemapplication.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.TypedQuery;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Repository;
+
+import com.capgemini.retailermaintenancesystemapplication.dto.ProductInfoBean;
+import com.capgemini.retailermaintenancesystemapplication.exception.ProductInfoException;
+
+@Repository
+	public class ProductInfoDaoImpl implements ProductInfoDao{
+	
+
+	@PersistenceUnit
+	private EntityManagerFactory factory;
+
+		@Override
+		public boolean addProductInfoProfile(ProductInfoBean bean) {
+			
+			EntityManager manager=factory.createEntityManager();
+			EntityTransaction transaction=manager.getTransaction();
+			ProductInfoBean productInfoBean = new ProductInfoBean();
+			
+			productInfoBean.setId(bean.getId());
+			productInfoBean.setUserid(bean.getUserid());
+			productInfoBean.setName(bean.getName());
+			productInfoBean.setQuantity(bean.getQuantity());
+			productInfoBean.setDetails(bean.getDetails());
+			
+			transaction.begin();
+			try {
+				manager.persist(productInfoBean);
+				transaction.commit();
+				return true;
+			}catch (Exception e){
+			
+				e.printStackTrace();
+				throw new ProductInfoException("product already exists");
+			}
+		
+		}
+
+		@Override
+		public ProductInfoBean authProductInfo(int userid, String password) {
+			EntityManager manager=factory.createEntityManager();
+			String jpql="from ProductInfoBean where id=:id ";
+			TypedQuery<ProductInfoBean> query=manager.createQuery(jpql,ProductInfoBean.class); 
+			query.setParameter("id",userid);
+			
+			try {
+				ProductInfoBean bean=query.getSingleResult();
+				
+				//encryption method
+				BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+				if(encoder.matches(password, bean.getPassword())) {
+					return bean;
+				}else {
+					throw new ProductInfoException("Password Invalid");
+				}
+				//return bean;
+			}catch(Exception e) {
+				throw new ProductInfoException("Id Invalid");
+			}
+
+		@Override 
+		ProductInfoBean getProductInfo(int id) {
+			String jpql1="from ProductBean where id=:id";
+			EntityManager manager1=factory.createEntityManager();
+			TypedQuery<ProductInfoBean> query1=manager1.createQuery(jpql1,ProductInfoBean.class);
+			query1.setParameter("id",id);
+			try {
+				return query1.getSingleResult();
+			}catch(Exception e) {
+				e.printStackTrace();
+				throw new ProductInfoException("Product not found");
+			}
+			return null;
+		}
+
+		@Override
+		public boolean updatePassword(int id1, String password1) {
+			EntityManager manager1=factory.createEntityManager();
+			EntityTransaction transaction=manager1.getTransaction();
+			transaction.begin();
+			ProductInfoBean bean1= manager1.find(ProductInfoBean.class,id1);
+			bean1.setPassword(bean1.getPassword());
+			bean1.setName(bean1.getName());
+			transaction.commit();
+			return true;
+		}
+
+		@Override
+		public List<ProductInfoBean> getAllProduct(int id1) throws ProductInfoException {
+		EntityManager manager=factory.createEntityManager();
+		TypedQuery<ProductBean> query=manager.createQuery(jpql,ProductBean.class);
+		return query.getResultList();
+		return null;
+		}
+		
+		
+		
+	}
+
+}
+	
+//		@PersistenceUnit
+//		private EntityManagerFactory factory;
+//		
+//		@Override
+//		public boolean addProduct(ProductBean bean) {
+//			
+//			EntityManager manager=factory.createEntityManager();
+//			EntityTransaction transaction=manager.getTransaction();
+//			ProductBean productBean = new ProductBean();
+//			
+//			productBean.setId(bean.getId());
+//			productBean.setCost(bean.getCost());
+//			productBean.setImageUrl(bean.getImageUrl());
+//			productBean.setName(bean.getName());
+//			
+//			transaction.begin();
+//			try {
+//				manager.persist(productBean);
+//				transaction.commit();
+//				return true;
+//			}catch (Exception e){
+//			
+//				e.printStackTrace();
+//				throw new ProductException("product already exists");
+//			}
+//			
+//		}
+//
+//		@Override
+//		public ProductBean getProduct(int id) {
+//		String jpql="from ProductBean where id=:id";
+//		EntityManager manager=factory.createEntityManager();
+//		TypedQuery<ProductBean> query=manager.createQuery(jpql,ProductBean.class);
+//		query.setParameter("id",id);
+//		try {
+//			return query.getSingleResult();
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//			throw new ProductException("Product not found");
+//		}
+//	}
+//
+//		@Override
+//		public List<ProductBean> getAllProduct() {
+//			String jpql="from ProductBean";
+//			EntityManager manager=factory.createEntityManager();
+//			TypedQuery<ProductBean> query=manager.createQuery(jpql,ProductBean.class);
+//			return query.getResultList();
+//		}
+//
+//		@Override
+//		public boolean updateProduct(int id, ProductBean bean) {
+//			EntityManager manager=factory.createEntityManager();
+//			EntityTransaction transaction=manager.getTransaction();
+//			transaction.begin();
+//			ProductBean bean1= manager.find(ProductBean.class,id);
+//			bean1.setCost(bean.getCost());
+//			bean1.setName(bean.getImageUrl());
+//			transaction.commit();
+//			return true;
+//		}
+//
+//		@Override
+//		public boolean deleteProduct(int id) {
+//			EntityManager manager=factory.createEntityManager();
+//			EntityTransaction transaction=manager.getTransaction();
+//			transaction.begin();
+//			ProductBean bean=manager.find(ProductBean.class,id);
+//			if(bean!=null) {
+//				manager.remove(bean);
+//				transaction.commit();
+//			return true;
+//		}
+//		 throw new ProductException("Product not Found");
+//		}
+//	}
+//	
+//	@PersistenceUnit //this is for this line private EntityManagerFactory factory=Persistence.createEntityManagerFactory();
+//	private EntityManagerFactory factory;//by making it private we can access it in complete class
+//	
+//	@Override
+//	public EmployeeBean auth(String email, String password) {
+//		
+//		EntityManager manager=factory.createEntityManager();
+//		String jpql="from EmployeeBean where email=:email ";
+//		//Instead of down casting both side we write TypedQuery otherwise it give error if we don't downcast it.
+//		TypedQuery<EmployeeBean> query=manager.createQuery(jpql,EmployeeBean.class);//instead for writing Query query we write TypedQuery to avoid downcasting 
+//		query.setParameter("email",email);
+//		//query.setParameter("password",password);
+//		
+//		try {
+//			EmployeeBean bean=query.getSingleResult();
+//			
+//			//encryption method
+//			BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+//			if(encoder.matches(password, bean.getPassword())) {
+//				return bean;
+//			}else {
+//				throw new EmployeeException("Password Invalid");
+//			}
+//			//return bean;
+//		}catch(Exception e) {
+//			throw new EmployeeException("Email Invalid");
+//		}
+//	
+//	}
+//
+//	@Override
+//	public boolean register(EmployeeBean bean) {
+//		EntityManager manager=factory.createEntityManager();
+//		EntityTransaction transaction=manager.getTransaction();
+//		transaction.begin();
+//		try {
+//		manager.persist(bean);
+//		transaction.commit();
+//		return true;
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//			throw new EmployeeException("");
+//		}
+//	}
+//
+//
+//	@Override
+//	public List<EmployeeBean> getEmployees(String key) { //in place of name we write key
+//		String jpql="from EmployeeBean where name=:name or email=:email";
+//		EntityManager manager=factory.createEntityManager();
+//		TypedQuery<EmployeeBean> query=manager.createQuery(jpql,EmployeeBean.class);
+//		query.setParameter("name",key);
+//		query.setParameter("email",key);
+//		return query.getResultList();
+//	}
+//
+//	@Override
+//	public boolean changePassword(int id, String password) {
+//		EntityManager manager=factory.createEntityManager();
+//		EntityTransaction transaction=manager.getTransaction();
+//		transaction.begin();
+//		EmployeeBean bean=manager.find(EmployeeBean.class,id);
+//		bean.setPassword(password);
+//		transaction.commit();
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean deleteEmployee(int id) {
+//		EntityManager manager=factory.createEntityManager();
+//		EntityTransaction transaction=manager.getTransaction();
+//		transaction.begin();
+//		EmployeeBean bean=manager.find(EmployeeBean.class,id);
+//		if(bean!=null) {
+//			manager.remove(bean);
+//			transaction.commit();
+//			return true;
+//		}
+//		return false;
+//	}
+//}
