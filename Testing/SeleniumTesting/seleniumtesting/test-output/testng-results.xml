@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+  <reporter-output>
+    <line>
+      <![CDATA[@BeforeSuite]]>
+    </line>
+    <line>
+      <![CDATA[@BeforeTest]]>
+    </line>
+    <line>
+      <![CDATA[@BeforeClass]]>
+    </line>
+    <line>
+      <![CDATA[@BeforeMethod]]>
+    </line>
+    <line>
+      <![CDATA[testA1]]>
+    </line>
+    <line>
+      <![CDATA[@AfterMethod]]>
+    </line>
+    <line>
+      <![CDATA[@BeforeMethod]]>
+    </line>
+    <line>
+      <![CDATA[testA2]]>
+    </line>
+    <line>
+      <![CDATA[@AfterMethod]]>
+    </line>
+    <line>
+      <![CDATA[@AfterClass]]>
+    </line>
+    <line>
+      <![CDATA[@AfterTest]]>
+    </line>
+    <line>
+      <![CDATA[@AfterSuite]]>
+    </line>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="63" started-at="2020-01-16T12:39:03Z" finished-at="2020-01-16T12:39:03Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="63" started-at="2020-01-16T12:39:03Z" finished-at="2020-01-16T12:39:03Z">
+      <class name="com.capgemini.seleniumtesting.basetestclasses.TestA">
+        <test-method status="PASS" signature="m1()[pri:0, instance:com.capgemini.seleniumtesting.basetestclasses.TestA@26be92ad]" name="m1" is-config="true" duration-ms="15" started-at="2020-01-16T12:39:03Z" finished-at="2020-01-16T12:39:03Z">
+          <reporter-output>
+            <line>
+              <![CDATA[@BeforeSuite]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- m1 -->
+        <test-method status="PASS" signature="m2()[pri:0, instance:com.capgemini.seleniumtesting.basetestclasses.TestA@26be92ad]" name="m2" is-config="true" duration-ms="0" started-at="2020-01-16T12:39:03Z" finished-at="2020-01-16T12:39:03Z">
+          <reporter-output>
+            <line>
+              <![CDATA[@BeforeTest]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- m2 -->
+        <test-method status="PASS" signature="m3()[pri:0, instance:com.capgemini.seleniumtesting.basetestclasses.TestA@26be92ad]" name="m3" is-config="true" duration-ms="0" started-at="2020-01-16T12:39:03Z" finished-at="2020-01-16T12:39:03Z">
+          <reporter-output>
+            <line>
+              <![CDATA[@BeforeClass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- m3 -->
+        <test-method status="PASS" signature="m4()[pri:0, instance:com.capgemini.seleniumtesting.basetestclasses.TestA@26be92ad]" name="m4" is-config="true" duration-ms="0" started-at="2020-01-16T12:39:03Z" finished-at="2020-01-16T12:39:03Z">
+          <reporter-output>
+            <line>
+              <![CDATA[@BeforeMethod]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- m4 -->
+        <test-method status="PASS" signature="m4()[pri:0, instance:com.capgemini.seleniumtesting.basetestclasses.TestA@26be92ad]" name="m4" is-config="true" duration-ms="0" started-at="2020-01-16T12:39:03Z" finished-at="2020-01-16T12:39:03Z">
+          <reporter-output>
+            <line>
+              <![CDATA[@BeforeMethod]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- m4 -->
+        <test-method status="PASS" signature="test2()[pri:0, instance:com.capgemini.seleniumtesting.basetestclasses.TestA@26be92ad]" name="test2" duration-ms="0" started-at="2020-01-16T12:39:03Z" finished-at="2020-01-16T12:39:03Z">
+          <reporter-output>
+            <line>
+              <![CDATA[testA2]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- test2 -->
+        <test-method status="PASS" signature="test1()[pri:0, instance:com.capgemini.seleniumtesting.basetestclasses.TestA@26be92ad]" name="test1" duration-ms="0" started-at="2020-01-16T12:39:03Z" finished-at="2020-01-16T12:39:03Z">
+          <reporter-output>
+            <line>
+              <![CDATA[testA1]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- test1 -->
+        <test-method status="PASS" signature="m8()[pri:0, instance:com.capgemini.seleniumtesting.basetestclasses.TestA@26be92ad]" name="m8" is-config="true" duration-ms="0" started-at="2020-01-16T12:39:03Z" finished-at="2020-01-16T12:39:03Z">
+          <reporter-output>
+            <line>
+              <![CDATA[@AfterMethod]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- m8 -->
+        <test-method status="PASS" signature="m8()[pri:0, instance:com.capgemini.seleniumtesting.basetestclasses.TestA@26be92ad]" name="m8" is-config="true" duration-ms="0" started-at="2020-01-16T12:39:03Z" finished-at="2020-01-16T12:39:03Z">
+          <reporter-output>
+            <line>
+              <![CDATA[@AfterMethod]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- m8 -->
+        <test-method status="PASS" signature="m7()[pri:0, instance:com.capgemini.seleniumtesting.basetestclasses.TestA@26be92ad]" name="m7" is-config="true" duration-ms="0" started-at="2020-01-16T12:39:03Z" finished-at="2020-01-16T12:39:03Z">
+          <reporter-output>
+            <line>
+              <![CDATA[@AfterClass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- m7 -->
+        <test-method status="PASS" signature="m6()[pri:0, instance:com.capgemini.seleniumtesting.basetestclasses.TestA@26be92ad]" name="m6" is-config="true" duration-ms="0" started-at="2020-01-16T12:39:03Z" finished-at="2020-01-16T12:39:03Z">
+          <reporter-output>
+            <line>
+              <![CDATA[@AfterTest]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- m6 -->
+        <test-method status="PASS" signature="m5()[pri:0, instance:com.capgemini.seleniumtesting.basetestclasses.TestA@26be92ad]" name="m5" is-config="true" duration-ms="0" started-at="2020-01-16T12:39:03Z" finished-at="2020-01-16T12:39:03Z">
+          <reporter-output>
+            <line>
+              <![CDATA[@AfterSuite]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- m5 -->
+      </class> <!-- com.capgemini.seleniumtesting.basetestclasses.TestA -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

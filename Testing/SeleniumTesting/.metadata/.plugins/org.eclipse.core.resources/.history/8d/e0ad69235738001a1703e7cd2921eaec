@@ -1,0 +1,7 @@
+package com.capgemini.seleniumtesting.basetestclasses;
+
+import com.capgemini.seleniumtesting.testclasses.A;
+
+public class TestA extends A{
+
+}

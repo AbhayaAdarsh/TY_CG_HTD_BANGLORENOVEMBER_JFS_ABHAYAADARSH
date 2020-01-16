@@ -1,0 +1,5 @@
+package com.capgemini.seleniumtesting.webdriver;
+
+public class DragAndDrop {
+
+}

@@ -1,0 +1,7 @@
+package com.capgemini.seleniumtesting.webdriver;
+
+public class Getwindowhandle {
+static {
+	System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver.exe");
+}
+}

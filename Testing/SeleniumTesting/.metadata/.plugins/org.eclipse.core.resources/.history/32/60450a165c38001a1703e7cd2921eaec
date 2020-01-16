@@ -1,0 +1,22 @@
+package com.capgemini.seleniumtesting.webdriver;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+
+public class Assertion {
+	static {
+		System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver.exe");
+	}
+	public void test1() {
+		
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://demo.actitime.com/login.do");
+		String actual=driver.getTitle();
+		String expected="actiTIME";
+		Assert.assertEquals(actual, expected);
+		driver.close();
+	}
+}
