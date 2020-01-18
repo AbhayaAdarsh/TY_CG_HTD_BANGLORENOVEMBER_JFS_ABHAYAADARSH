@@ -1,0 +1,32 @@
+<div class="alert alert-success" *ngFor='message'>
+    {{message}}
+</div>
+<div class="col-md-4 offset-md-4 mt-4">
+    <h4 class="h4 text-center text-secondary">
+        Update Customer!!!
+    </h4>
+    <form #editForm='ngForm' (ngSubmit)=' updateCustomer(editForm)'>
+       
+        <input type="hidden" name="id" id="id" #id='ngModel' class="form-control"
+            [(ngModel)]='customerService. selectedCustomerComponent.id'>
+</div>
+<div class="form-group">
+    <label for="customerName">Customer Name</label>
+    <input type="text" name="customerName" id="customerName" #customerName='ngModel' class="form-control" required
+        [(ngModel)]='customerService. selectedCustomerComponent.customerName'>
+</div>
+<div class="form-group">
+    <label for="productImage">Customer Email</label>
+    <input type="text" name="customerEmail" id="customerEmail" #customerEmail='ngModel' required class="form-control"
+        [(ngModel)]='customerService. selectedCustomerComponent.customerEmail'>
+</div>
+<div class="form-group">
+    <label for="customerNumber">Customer PhoneNo.</label>
+    <input type="number" name="customerNumber" id="customerNumber" #customerNumber='ngModel' required pattern="[0-9]{10}"
+        class="form-control" [(ngModel)]='customerService. selectedCustomerComponent.customerCost'>
+</div>
+<button type="submit" (ngSubmit)='addCustomer(addCustomerForm)' class="btn btn-outline-primary float-right">
+    Update Customer
+</button>
+</form>
+</div>

@@ -1,0 +1,35 @@
+
+<div class="alert alert-success" *ngFor='message'>
+    {{message}}
+</div>
+<div class="col-md-4 offset-md-4 mt-4">
+    <h4 class="h4 text-center text-secondary">
+        Update Product!!!
+    </h4>
+    <form #editForm='ngForm' (ngSubmit)=' updateProduct(editForm)'>
+        <!-- <div class="form-group">
+            <label for="productName">Product Id</label> -->
+        <input type="hidden" name="id" id="id" #id='ngModel' class="form-control"
+            [(ngModel)]='productService. selectedProductComponent.id'>
+</div>
+<div class="form-group">
+    <label for="productName">Product Name</label>
+    <input type="text" name="productName" id="productName" #productName='ngModel' class="form-control" required
+        [(ngModel)]='productService. selectedProductComponent.productName'>
+</div>
+<div class="form-group">
+    <label for="productImage">Product Image</label>
+    <input type="text" name="productImage" id="productImage" #productImage='ngModel' required class="form-control"
+        [(ngModel)]='productService. selectedProductComponent.productImage'>
+</div>
+<div class="form-group">
+    <label for="productCost">Product Cost</label>
+    <input type="text" name="productCost" id="productCost" #productCost='ngModel' required pattern="[0-9]{10}"
+        class="form-control" [(ngModel)]='productService. selectedProductComponent.productCost'>
+</div>
+<button type="submit" (ngSubmit)='addProduct(addProductForm)' class="btn btn-outline-primary float-right">
+    Update Product
+</button>
+</form>
+</div>
+
