@@ -1,0 +1,125 @@
+package com.capgemini.forestrymanagement.collectioncontroller;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.capgemini.forestrymanagement.collectionbean.ContractorBean;
+import com.capgemini.forestrymanagement.collectiondao.ContractorDao;
+import com.capgemini.forestrymanagement.collectionmanager.ContractorDaoManager;
+
+public class Contractor {
+	public static void contractor() {
+		ContractorDao dao = ContractorDaoManager.getContractordao();
+		ContractorBean bean = new ContractorBean();
+		Scanner sc = new Scanner(System.in);
+		try {
+			while (true) {
+				System.out.println("***************ADD CONTRACT DETAILS**************");
+				System.out.println("1.Add Contractor");
+				System.out.println("2.Delete Contractor");
+				System.out.println("3.Display Contractor");
+				System.out.println("4.Modify Contractor");
+				System.out.println("5.Logout");
+				System.out.println("Enter your choice:");
+				int choice = sc.nextInt();
+				switch (choice) {
+				case 1:
+					System.out.println("Enter contractor id:");
+					int contractorid = sc.nextInt();
+					Validation.idValid(contractorid);
+					bean.setContractid(contractorid);
+					System.out.println("Enter customerid:");
+					int customerId = sc.nextInt();
+					Validation.idValid(customerId);
+					bean.setContractid(customerId);
+					System.out.println("Enter productid:");
+					int productId = sc.nextInt();
+					Validation.idValid(productId);
+					bean.setContractid(productId);
+					System.out.println("Enter haulierid:");
+					int haulierId = sc.nextInt();
+					Validation.idValid(haulierId);
+					bean.setContractid(haulierId);
+
+					System.out.println("Enter deliver date:");
+					String deliveryDate = sc.next();
+					bean.setDeliveryDate(deliveryDate);
+					System.out.println("Enter quantity:");
+					int quantity = sc.nextInt();
+					bean.setQuantity(quantity);
+
+					boolean check = dao.addContractor(bean);
+					if (check) {
+						System.out.println("Contractor added to the list.");
+					} else {
+						System.out.println("Something went wrong!!");
+					}
+					break;
+				case 2:
+					System.out.println("Enter the product id to delete:");
+					int contractorid2 = sc.nextInt();
+					boolean check2 = dao.deleteContractor(contractorid2);
+					if (check2) {
+						System.out.println("Contract details deleted.");
+					} else {
+						System.out.println("Something went wrong!!");
+					}
+					break;
+				case 3:
+					System.out.println("Contractor records:");
+					List<ContractorBean> list = dao.getAllContractor();
+					if (list != null) {
+						for (ContractorBean user : list) {
+							System.out.println(user.toString());
+						}
+					}
+					break;
+				case 4:
+					System.out.println("Enter contractor id:");
+					int contractorid1 = sc.nextInt();
+					Validation.idValid(contractorid1);
+					bean.setContractid(contractorid1);
+					System.out.println("Enter customerid:");
+					int customerId1 = sc.nextInt();
+					Validation.idValid(customerId1);
+					bean.setContractid(customerId1);
+					System.out.println("Enter haulierid:");
+					int haulierId1 = sc.nextInt();
+					Validation.idValid(haulierId1);
+					bean.setContractid(haulierId1);
+
+					System.out.println("Enter deliver date:");
+					String deliveryDate1 = sc.next();
+					bean.setDeliveryDate(deliveryDate1);
+					System.out.println("Enter quantity:");
+					int quantity1 = sc.nextInt();
+					bean.setQuantity(quantity1);
+
+					boolean check3 = dao.modifyContractor(bean);
+					if (check3) {
+						System.out.println("Contractor updated to the list:");
+					} else {
+						System.out.println("Something went wrong!!");
+					}
+					break;
+				case 5:
+					System.out.println("Exit Successfully.");
+					break;
+				default:
+					System.out.println("Invalid Input!!");
+					break;
+				}// End Of Switch
+			}
+		} catch (Exception e) {
+			e.getMessage();
+		} finally {
+			try {
+				if (sc != null)
+					sc.close();
+			} catch (Exception e2) {
+				e2.getMessage();
+			}
+		}
+	}
+
+}// End of Class
