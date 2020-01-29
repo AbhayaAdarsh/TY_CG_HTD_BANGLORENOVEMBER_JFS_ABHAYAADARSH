@@ -1,0 +1,136 @@
+
+package com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcdao;
+
+import java.io.FileReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
+import com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcbean.ContractorBean;
+
+public class ContractorDaoImpl implements ContractorDao {
+	FileReader reader;
+	Properties prop;
+	ContractorBean contractor;
+
+	public ContractorDaoImpl() {
+		try {
+			reader = new FileReader("contractor.properties");
+			prop = new Properties();
+			prop.load(reader);
+			contractor = new ContractorBean();
+			Class.forName(prop.getProperty("driverClass"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public boolean addContractor(ContractorBean contractor) {
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("insertQuery"));) {
+			pstmt.setInt(1, contractor.getContractid());
+			pstmt.setInt(2, contractor.getCustomerId());
+			pstmt.setInt(3, contractor.getProductId());
+			pstmt.setInt(4, contractor.getHaulierId());
+			pstmt.setString(5, contractor.getDeliveryDate());
+			pstmt.setInt(6, contractor.getQuantity());
+			int count = pstmt.executeUpdate();
+			if (count > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteContractor(int contractorid) {
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("deleteQuery"));) {
+			pstmt.setInt(1, contractorid);
+			int count = pstmt.executeUpdate();
+			if (count > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean modifyContractor(ContractorBean contractor) {
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("updateQuery"));) {
+			pstmt.setInt(1, contractor.getContractid());
+			pstmt.setInt(2, contractor.getCustomerId());
+			pstmt.setInt(3, contractor.getProductId());
+			pstmt.setInt(4, contractor.getHaulierId());
+			pstmt.setString(5, contractor.getDeliveryDate());
+			pstmt.setInt(6, contractor.getQuantity());
+			int count = pstmt.executeUpdate();
+			if (count > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public ContractorBean getContractor(int contractorid) {
+		// List<ContractorBean> list=new ArrayList<ContractorBean>();
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("searchQuery"));) {
+			pstmt.setInt(1, contractorid);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				contractor.setContractid(rs.getInt(1));
+				contractor.setCustomerId(rs.getInt(2));
+				contractor.setProductId(rs.getInt(3));
+				contractor.setHaulierId(rs.getInt(4));
+				contractor.setDeliveryDate(rs.getString(5));
+				contractor.setQuantity(rs.getInt(6));
+			}
+			return contractor;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<ContractorBean> getAllContractor() {
+		List<ContractorBean> list = new ArrayList<ContractorBean>();
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(prop.getProperty("showAll"));) {
+			while (rs.next()) {
+				contractor.setContractid(rs.getInt(1));
+				contractor.setCustomerId(rs.getInt(2));
+				contractor.setProductId(rs.getInt(3));
+				contractor.setHaulierId(rs.getInt(4));
+				contractor.setDeliveryDate(rs.getString(5));
+				contractor.setQuantity(rs.getInt(6));
+				list.add(contractor);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+}

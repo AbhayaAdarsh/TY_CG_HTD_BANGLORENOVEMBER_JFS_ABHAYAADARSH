@@ -1,0 +1,124 @@
+package com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbccontroller;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcbean.ContractorBean;
+import com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcexception.ForestryException;
+import com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcmanager.ContractorDaoManager;
+import com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcservice.ContractorServices;
+
+public class Contractor {
+	public static void contractor() throws ForestryException {
+		ContractorServices services = ContractorDaoManager.instanceOfContractorServiceImpl();
+		ContractorBean bean = new ContractorBean();
+		Scanner sc = new Scanner(System.in);
+		try {
+			while (true) {
+				System.out.println("******************Contractor DETAILS****************");
+				System.out.println("1.Add Contractor");
+				System.out.println("2.Delete Contractor");
+				System.out.println("3.Search Contractor");
+				System.out.println("4.Modify Contractor");
+				System.out.println("5.Display Contractor");
+				System.out.println("Enter your choice");
+				int choice = sc.nextInt();
+				switch (choice) {
+				case 1:
+					System.out.println("Enter contractor id:");
+					int contractorid = sc.nextInt();
+					Validation.idValid(contractorid);
+					bean.setContractid(contractorid);
+					System.out.println("Enter customerid:");
+					int customerId = sc.nextInt();
+					Validation.idValid(customerId);
+					bean.setCustomerId(customerId);
+					System.out.println("Enter productid:");
+					int productId = sc.nextInt();
+					Validation.idValid(productId);
+					bean.setProductId(productId);
+					System.out.println("Enter haulierid:");
+					int haulierId = sc.nextInt();
+					Validation.idValid(haulierId);
+					bean.setHaulierId(haulierId);
+					System.out.println("Enter delivery date:");
+					String deliveryDate = sc.next();
+					Validation.dateValid(deliveryDate);
+					bean.setDeliveryDate(deliveryDate);
+					System.out.println("Enter quantity:");
+					int quantity = sc.nextInt();
+					bean.setQuantity(quantity);
+					boolean check = services.addContractor(bean);
+					if (check) {
+						System.out.println("Contractor added to the list.");
+					} else {
+						System.out.println("Something went wrong!!");
+					}
+					break;
+				case 2:
+					System.out.println("Enter the product id to delete:");
+					int contractorid2 = sc.nextInt();
+					boolean check2 = services.deleteContractor(contractorid2);
+					if (check2) {
+						System.out.println("Contract details deleted.");
+					} else {
+						System.out.println("Something went wrong!!");
+					}
+					break;
+				case 3:
+					System.out.println("enter contractorid");
+					bean.setContractid(sc.nextInt());
+					ContractorBean cust = services.getContractor(bean.getContractid());
+					if (cust != null) {
+						System.out.println(cust);
+					} else {
+						System.err.println("Something went wrong");
+					}
+					break;
+				case 4:
+					System.out.println("Enter contractor id:");
+					int contractorid1 = sc.nextInt();
+					Validation.idValid(contractorid1);
+					bean.setContractid(contractorid1);
+					System.out.println("Enter customerid:");
+					int customerId1 = sc.nextInt();
+					Validation.idValid(customerId1);
+					bean.setCustomerId(customerId1);
+					System.out.println("Enter productid:");
+					int productId1 = sc.nextInt();
+					Validation.idValid(productId1);
+					bean.setProductId(productId1);
+					System.out.println("Enter haulierid:");
+					int haulierId1 = sc.nextInt();
+					Validation.idValid(haulierId1);
+					bean.setHaulierId(haulierId1);
+					System.out.println("Enter delivery date:");
+					String dlvryDate = sc.next();
+					Validation.dateValid(dlvryDate);
+					bean.setDeliveryDate(dlvryDate);
+					System.out.println("Enter quantity:");
+					int qty = sc.nextInt();
+					bean.setQuantity(qty);
+					boolean check3 = services.modifyContractor(bean);
+					if (check3) {
+						System.out.println("Contractor updated to the list:");
+					} else {
+						System.out.println("Something went wrong!!");
+					}
+					break;
+				case 5:
+					System.out.println("Contractor records:");
+					List<ContractorBean> list = services.getAllContractor();
+					if (list != null) {
+						for (ContractorBean user : list) {
+							System.out.println(user.toString());
+						}
+					}
+				}
+			}
+		} finally {
+			if (sc != null)
+				sc.close();
+		}
+	}
+}// End of Class

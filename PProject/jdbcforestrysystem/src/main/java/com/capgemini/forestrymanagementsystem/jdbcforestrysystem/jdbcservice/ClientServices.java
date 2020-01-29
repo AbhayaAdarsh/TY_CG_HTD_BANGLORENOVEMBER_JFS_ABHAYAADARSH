@@ -1,0 +1,17 @@
+package com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcservice;
+
+import java.util.List;
+
+import com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcbean.ClientBean;
+
+public interface ClientServices {
+	boolean addClient(ClientBean bean);
+
+	boolean deleteClient(int custid);
+
+	boolean updateClient(ClientBean bean);
+
+	ClientBean getClient(int clientid);
+
+	List<ClientBean> getAllClient();
+}
