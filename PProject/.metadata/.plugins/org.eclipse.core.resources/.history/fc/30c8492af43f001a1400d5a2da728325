@@ -1,0 +1,11 @@
+package com.capgemini.springrestforestrymanagement.manager;
+
+import com.capgemini.springrestforestrymanagement.dao.ContractorDao;
+
+public class ContractorDaoManager {
+
+	public static ContractorDao instanceOfContractorDaoImpl() {
+		return null;
+	}
+
+}

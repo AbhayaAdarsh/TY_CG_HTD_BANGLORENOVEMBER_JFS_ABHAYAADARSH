@@ -1,0 +1,41 @@
+package com.capgemini.forestrymanagement.collectiondao;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.capgemini.forestrymanagement.collectionbean.SchedularBean;
+
+class SchedularDaoImplTest {
+	SchedularBean schedularBean = null;
+    SchedularDaoImpl schedularDao = null;
+    @BeforeEach
+    void loadDriver() {
+   schedularDao = new SchedularDaoImpl();
+    }
+	@Test
+	void testAddSchedular() {
+		SchedularBean schedularBean=new SchedularBean();
+		schedularBean.setSchedulerId(102);
+		schedularBean.setSchedulerName("Prince");
+		schedularBean.setSchedulerPassword("qwerty");
+		try {
+			boolean flag = schedularDao.addSchedular(schedularBean);
+			assertEquals(flag, true);
+		} catch (Exception e) {
+			//assertThrows(CollectionException.class, () -> {
+			schedularDao.addSchedular(schedularBean);
+			//});
+		}
+	}
+
+//	@Test
+//	void testModifySchedular() {
+//	}
+
+	@Test
+	void testDeleteSchedular() {
+	}
+
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="LandsDAOImplTest" project="springrestforestrymanagementproject" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="com.capgemini.springrestforestrymanagement.dao.LandsDAOImplTest" time="0.05" displayname="LandsDAOImplTest" uniqueid="[engine:junit-jupiter]/[class:com.capgemini.springrestforestrymanagement.dao.LandsDAOImplTest]">
+    <testcase name="testDeleteLands" classname="com.capgemini.springrestforestrymanagement.dao.LandsDAOImplTest" time="0.028" displayname="testDeleteLands()" uniqueid="[engine:junit-jupiter]/[class:com.capgemini.springrestforestrymanagement.dao.LandsDAOImplTest]/[method:testDeleteLands()]"/>
+    <testcase name="testUpdateLands" classname="com.capgemini.springrestforestrymanagement.dao.LandsDAOImplTest" time="0.001" displayname="testUpdateLands()" uniqueid="[engine:junit-jupiter]/[class:com.capgemini.springrestforestrymanagement.dao.LandsDAOImplTest]/[method:testUpdateLands()]"/>
+    <testcase name="testSearchLands" classname="com.capgemini.springrestforestrymanagement.dao.LandsDAOImplTest" time="0.003" displayname="testSearchLands()" uniqueid="[engine:junit-jupiter]/[class:com.capgemini.springrestforestrymanagement.dao.LandsDAOImplTest]/[method:testSearchLands()]"/>
+    <testcase name="testGetAllLands" classname="com.capgemini.springrestforestrymanagement.dao.LandsDAOImplTest" time="0.002" displayname="testGetAllLands()" uniqueid="[engine:junit-jupiter]/[class:com.capgemini.springrestforestrymanagement.dao.LandsDAOImplTest]/[method:testGetAllLands()]"/>
+    <testcase name="testAddLands" classname="com.capgemini.springrestforestrymanagement.dao.LandsDAOImplTest" time="0.016" displayname="testAddLands()" uniqueid="[engine:junit-jupiter]/[class:com.capgemini.springrestforestrymanagement.dao.LandsDAOImplTest]/[method:testAddLands()]"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,29 @@
+package com.capgimini.forestmanagentsystem.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class HaulierDAOImplTest {
+
+	@Test
+	void testAddHauiler() {
+	}
+
+	@Test
+	void testGetHaulier() {
+	}
+
+	@Test
+	void testGetAllHauliers() {
+	}
+
+	@Test
+	void testUpdateHaulier() {
+	}
+
+	@Test
+	void testDeleteHaulier() {
+	}
+
+}

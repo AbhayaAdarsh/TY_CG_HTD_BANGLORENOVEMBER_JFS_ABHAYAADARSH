@@ -1,0 +1,15 @@
+package com.capgemini.forestrymanagement.hibernatemanager;
+
+import com.capgemini.forestrymanagement.hibernatedao.SchedularDao;
+import com.capgemini.forestrymanagement.hibernatedao.SchedularDaoImpl;
+
+public class SchedularDaoManager {
+	public static SchedularDao instanceOfSchedularDaoImpl() {
+		SchedularDao dao = new SchedularDaoImpl();
+		return dao;
+	}
+
+	public static SchedularDao getSchedulardao() {
+		return null;
+	}
+}

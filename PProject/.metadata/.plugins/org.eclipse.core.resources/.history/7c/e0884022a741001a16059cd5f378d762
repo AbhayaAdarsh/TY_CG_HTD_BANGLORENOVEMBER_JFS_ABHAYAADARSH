@@ -1,0 +1,34 @@
+package com.capgemini.springrestforestrymanagement.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class LandsDAOImplTest {
+
+	@Test
+	void testGetAllLands() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateLands() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteLands() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testAddLands() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testSearchLands() {
+		fail("Not yet implemented");
+	}
+
+}

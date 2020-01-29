@@ -1,0 +1,15 @@
+package com.capgemini.forestrymanagement.hibernatemanager;
+
+import com.capgemini.forestrymanagement.hibernatedao.ContractorDao;
+import com.capgemini.forestrymanagement.hibernatedao.ContractorDaoImpl;
+
+public class ContractorDaoManager {
+	public static ContractorDao instanceOfContractorDaoImpl() {
+		ContractorDao dao = new ContractorDaoImpl();
+		return dao;
+	}
+
+	public static ContractorDao getContractordao() {
+		return null;
+	}
+}

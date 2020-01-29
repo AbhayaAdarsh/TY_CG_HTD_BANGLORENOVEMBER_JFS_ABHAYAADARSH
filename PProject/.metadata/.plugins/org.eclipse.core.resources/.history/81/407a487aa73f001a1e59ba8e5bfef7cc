@@ -1,0 +1,31 @@
+package com.capgemini.forestrymanagementsystem.hibernateforestrymanagementsystem.hibernatebean;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name="customer")
+public class CustomerBean  {
+	@Id
+	@Column
+	@GeneratedValue
+	private int cid;
+	@Column
+	private String name;
+	@Column
+	private String town;
+	@Column
+	private int postal;
+	@Column
+	private String email;
+	@Column
+	private String phone;
+	@Column
+	private String password;
+
+}

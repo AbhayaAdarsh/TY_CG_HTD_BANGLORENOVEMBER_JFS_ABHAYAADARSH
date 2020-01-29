@@ -1,0 +1,39 @@
+package com.capgimini.forestmanagentsystem.dto;
+
+import java.util.List;
+
+import lombok.Data;
+
+
+public class ContractResponse {
+	private int status;
+	private String message;
+	private String description;
+	private List<ContractBean> contract;
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public List<ContractBean> getContract() {
+		return contract;
+	}
+	public void setContract(List<ContractBean> contract) {
+		this.contract = contract;
+	}
+
+	
+}

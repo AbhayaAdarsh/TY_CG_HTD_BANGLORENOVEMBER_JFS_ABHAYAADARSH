@@ -1,0 +1,49 @@
+package com.capgimini.forestmanagentsystem.dao;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.capgimini.forestmanagentsystem.dto.OrderBean;
+
+class OrderDAOImplTest {
+
+	@Autowired
+	private OrderDAO OrderDao;
+	
+	@Test
+	void testAddOrder() {
+		OrderBean bean = new OrderBean();
+		  bean.setOrderNo(11);
+			bean.setCustomerId(111);
+			bean.setProductId(123);
+			bean.setQuantity(100);
+			bean.setDeliveryDate("14/02/2020");
+			bean.setDeliveryDay("sunday");
+			bean.setHaulierId(1234);
+			bean.setOrderNo(987654987);
+			assertTrue(OrderDao.addOrder(bean));
+	}
+
+	@Test
+	void testGetOrder() {
+		OrderBean Order = OrderDao.getOrder(5);
+	    assertNotNull(Order);
+	}
+
+	@Test
+	void testGetAllOrders() {
+		
+	}
+
+	@Test
+	void testUpdateOrder() {
+	}
+
+	@Test
+	void testDeleteOrder() {
+	}
+
+}

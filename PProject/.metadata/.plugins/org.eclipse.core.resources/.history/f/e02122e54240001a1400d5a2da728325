@@ -1,0 +1,19 @@
+package com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcmanager;
+
+import com.capgemini.forestrymanagement.jdbcdao.LandDao;
+import com.capgemini.forestrymanagement.jdbcdao.LandDaoImpl;
+import com.capgemini.forestrymanagement.jdbcservice.LandServices;
+import com.capgemini.forestrymanagement.jdbcservice.LandServicesImpl;
+
+public class LandDaoManager {
+
+	public static LandDao instanceOfLandDaoImpl() {
+		LandDao dao = new LandDaoImpl();
+		return dao;
+	}
+
+	public static LandServices instanceOfLandServiceImpl() {
+		LandServicesImpl services = new LandServicesImpl();
+		return services;
+	}
+}

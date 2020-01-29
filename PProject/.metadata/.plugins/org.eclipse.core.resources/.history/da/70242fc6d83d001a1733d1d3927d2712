@@ -1,0 +1,16 @@
+package com.capgemini.springrestforestrymanagement.service;
+
+import java.util.List;
+
+import com.capgemini.springrestforestrymanagement.dto.AdminBean;
+import com.capgemini.springrestforestrymanagement.exception.AdminException;
+
+public interface AdminService {
+	public boolean register(AdminBean bean);
+	public AdminBean login(int id,String password);
+	boolean updateAdmin(int id, AdminBean bean);
+	public boolean deleteAdmin(int id)throws AdminException;
+	public List<AdminBean> getAdminBean(int id);
+	public AdminBean addAdmin(int adminId, String password);
+	public List<AdminBean> getAllAdmin();
+    }

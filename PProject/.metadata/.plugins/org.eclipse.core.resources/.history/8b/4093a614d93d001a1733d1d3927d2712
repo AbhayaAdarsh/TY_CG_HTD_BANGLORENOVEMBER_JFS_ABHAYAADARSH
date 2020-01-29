@@ -1,0 +1,46 @@
+package com.capgemini.springrestforestrymanagement.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.capgemini.forestrymanagement.springbootdao.ProductDao;
+import com.capgemini.forestrymanagement.springbootdto.ProductBean;
+
+@Service
+public class ProductServiceImpl implements ProductServices {
+
+	@Autowired
+	ProductDao dao;
+
+	@Override
+	public boolean addProduct(ProductBean bean) {
+		return dao.addProduct(bean);
+	}
+
+	@Override
+	public boolean deleteProduct(int productid) {
+		return dao.deleteProduct(productid);
+	}
+
+	@Override
+	public boolean registerProduct(ProductBean bean) {
+		return dao.registerProduct(bean);
+	}
+
+	@Override
+	public boolean updateProduct(ProductBean bean) {
+		return false;
+	}
+
+	@Override
+	public ProductBean getProductBean(int productId) {
+		return null;
+	}
+
+	@Override
+	public List<ProductBean> getAllProduct() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

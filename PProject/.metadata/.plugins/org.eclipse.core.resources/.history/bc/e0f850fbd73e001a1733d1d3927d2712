@@ -1,0 +1,98 @@
+package com.capgemini.springrestforestrymanagement.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.TypedQuery;
+
+import org.springframework.stereotype.Repository;
+
+import com.capgemini.springrestforestrymanagement.dto.ContractorBean;
+import com.capgemini.springrestforestrymanagement.exception.ContractorException;
+
+@Repository
+public class ContractorDaoImpl implements ContractorDao {
+
+	@PersistenceUnit
+	private EntityManagerFactory factory;
+
+	@Override
+	public boolean addContractor(ContractorBean bean) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		ContractorBean contractorBean = new ContractorBean();
+		contractorBean.setContractorId(bean.getContractorId());
+		contractorBean.setContractorName(bean.getContractorName());
+		contractorBean.setContractorPassword(bean.getContractorPassword());
+		transaction.begin();
+		try {
+			manager.persist(contractorBean);
+			transaction.commit();
+			return true;
+		} catch (Exception e) {
+			throw new ContractorException("Contractor already exists");
+		}
+	}
+
+	@Override
+	public boolean deleteContractor(int contractorid) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+		try {
+		ContractorBean bean = manager.find(ContractorBean.class, contractorid);
+		if (bean != null) {
+			manager.remove(bean);
+			transaction.commit();
+			return true;
+		}
+		return false;
+		} catch (Exception e) {
+			throw new ContractorException("Contractor already exists");
+		}
+	}
+
+	@Override
+	public boolean updateContractor(int contractorid, ContractorBean bean) {
+		EntityManager manager1 = factory.createEntityManager();
+		EntityTransaction transaction = manager1.getTransaction();
+		transaction.begin();
+		try {
+		ContractorBean bean1 = manager1.find(ContractorBean.class, contractorid);
+		bean1.setContractorName(bean1.getContractorName());
+		transaction.commit();
+		return true;
+	    }catch (Exception e) {
+		throw new ContractorException("Contractor not Updated");
+	  }
+   }
+
+	@Override
+	public ContractorBean getContractor(int contractorid) {
+		String jpql = "from ContractorBean where contractorid=:contractorid";
+		EntityManager manager = factory.createEntityManager();
+		TypedQuery<ContractorBean> query = manager.createQuery(jpql, ContractorBean.class);
+		query.setParameter("contractorid", contractorid);
+		try {
+			return query.getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ContractorException("Contractor not found");
+		}
+	}
+	
+	@Override
+	public List<ContractorBean> getAllContractor() {
+		try {
+		String jpql = "from ContractorBean";
+		EntityManager manager = factory.createEntityManager();
+		TypedQuery<ContractorBean> query = manager.createQuery(jpql, ContractorBean.class);
+		return query.getResultList();
+	}catch (Exception e) {
+		throw new ContractorException("Contractor not found");
+	}
+  }
+}

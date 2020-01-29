@@ -1,0 +1,85 @@
+package com.capgimini.forestmanagentsystem.dto;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "customer")
+public class CustomerBean {
+	@Id
+	@Column
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int customerId;
+	@Column(nullable=false,unique=true)
+	private String customerName;
+	@Column(nullable=false)
+	private String address1;
+	@Column
+	private String address2;
+	@Column
+	private String town;
+	@Column
+	private int postalCode;
+	@Column(nullable=false)
+	private String email;
+	@Column(nullable=false)
+	private long phoneNumber;
+	public int getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+	public String getCustomerName() {
+		return customerName;
+	}
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+	public String getAddress1() {
+		return address1;
+	}
+	public void setAddress1(String address1) {
+		this.address1 = address1;
+	}
+	public String getAddress2() {
+		return address2;
+	}
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+	public String getTown() {
+		return town;
+	}
+	public void setTown(String town) {
+		this.town = town;
+	}
+	public int getPostalCode() {
+		return postalCode;
+	}
+	public void setPostalCode(int postalCode) {
+		this.postalCode = postalCode;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public long getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	public void setTelephoneNo(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+}

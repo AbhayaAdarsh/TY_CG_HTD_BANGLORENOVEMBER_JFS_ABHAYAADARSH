@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="HaulierDAOImplTest" project="springbootforestmanagentsystem" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.capgimini.forestmanagentsystem.dao.HaulierDAOImplTest" time="0.593" displayname="HaulierDAOImplTest" uniqueid="[engine:junit-jupiter]/[class:com.capgimini.forestmanagentsystem.dao.HaulierDAOImplTest]">
+    <testcase name="testGetAllHauliers" classname="com.capgimini.forestmanagentsystem.dao.HaulierDAOImplTest" time="0.593" displayname="testGetAllHauliers()" uniqueid="[engine:junit-jupiter]/[class:com.capgimini.forestmanagentsystem.dao.HaulierDAOImplTest]/[method:testGetAllHauliers()]"/>
+  </testsuite>
+</testrun>

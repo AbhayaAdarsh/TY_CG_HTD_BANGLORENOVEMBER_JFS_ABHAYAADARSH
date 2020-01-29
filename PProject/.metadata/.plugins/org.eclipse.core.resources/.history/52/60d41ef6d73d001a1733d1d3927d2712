@@ -1,0 +1,99 @@
+package com.capgemini.springrestforestrymanagement.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.capgemini.springrestforestrymanagement.dto.ProductBean;
+import com.capgemini.springrestforestrymanagement.dto.ProductResponce;
+import com.capgemini.springrestforestrymanagement.exception.ProductException;
+import com.capgemini.springrestforestrymanagement.service.ProductServices;
+
+@RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*", allowCredentials = "true")
+public class ProductController {
+	@Autowired
+	private ProductServices service;
+
+	@PostMapping(path = "/registerProduct", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ProductResponce addProduct(@RequestBody ProductBean bean) {
+		ProductResponce responce = new ProductResponce();
+		if (service.registerProduct(bean)) {
+			responce.setStatusCode(201);
+			responce.setMessage("Success");
+			responce.setDescription("Product Registered.");
+		} else {
+			responce.setStatusCode(401);
+			responce.setMessage("Failure");
+			responce.setDescription("Product already exsist");
+		}
+		return responce;
+	}
+
+	@GetMapping(path = "/getProduct", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ProductResponce getProduct(@RequestParam("productId") int productId) {
+		ProductResponce responce = new ProductResponce();
+		ProductBean beans = service.getProduct(productId);
+		if (beans == null) {
+			responce.setStatusCode(201);
+			responce.setMessage("Success");
+			responce.setDescription("Product Search Successful");
+		} else {
+			responce.setStatusCode(401);
+			responce.setMessage("Failure");
+			responce.setDescription("Data not Found!!! ");
+		}
+		return responce;
+	}
+	
+	@GetMapping(path = "/getAllProduct", produces = MediaType.APPLICATION_JSON_VALUE) 
+	public ProductResponce getAllProduct() {
+		ProductResponce responce = new ProductResponce();
+		List<ProductBean> beans = service.getAllProduct();
+		if (beans == null) {
+			responce.setStatusCode(201);
+			responce.setMessage("Success");
+			responce.setDescription("All Product Found.");
+		} else {
+			responce.setStatusCode(401);
+			responce.setMessage("Failure");
+			responce.setDescription("Data not Found!!! ");
+		}
+		return responce;
+	}
+
+	@PutMapping(path = "/updateProduct", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ProductResponce updateProduct(@RequestBody ProductBean bean) {
+		ProductResponce responce = new ProductResponce();
+		if (service.updateProduct(bean)) {
+			responce.setStatusCode(201);
+			responce.setMessage("Success");
+			responce.setDescription("Product Updated Successfully....");
+		} else {
+			responce.setStatusCode(401);
+			responce.setMessage("Failure");
+			responce.setDescription("Unable to change name.");
+		}
+		return responce;
+	}
+
+	@DeleteMapping(path = "/deleteProduct", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ProductResponce deleteProduct(@PathVariable("productId") int productId) throws ProductException {
+		ProductResponce responce = new ProductResponce();
+		service.getProduct(productId);
+		responce.setStatusCode(201);
+		responce.setMessage("Success");
+		responce.setDescription("Product Details Deleted");
+		return responce;
+	}
+}

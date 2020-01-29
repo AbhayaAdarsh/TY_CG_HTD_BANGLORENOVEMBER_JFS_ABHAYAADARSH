@@ -1,0 +1,48 @@
+package com.capgemini.springrestforestrymanagement.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import com.capgemini.springrestforestrymanagement.dto.LandsBean;
+import com.capgemini.springrestforestrymanagement.dto.ProductBean;
+
+class ProductDAOImplTest {
+
+	@Test
+	void testGetAllProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testAddProduct() {
+		ProductBean bean=new ProductBean();
+		bean.setPID(10);
+		bean.setName("iphone");
+		bean.setQantity(11);
+		Assertions.assertTrue(true);
+		Assertions.assertNotNull(bean);
+	}
+
+	@Test
+	void testSearchProduct() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testCheckIsTherePID() {
+		fail("Not yet implemented");
+	}
+
+}

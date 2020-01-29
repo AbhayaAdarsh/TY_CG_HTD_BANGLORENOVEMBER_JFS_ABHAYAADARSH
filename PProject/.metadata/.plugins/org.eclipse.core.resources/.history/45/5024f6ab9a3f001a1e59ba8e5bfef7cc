@@ -1,0 +1,7 @@
+package com.capgemini.forestrymanagement.hibernatedao;
+
+import com.capgemini.forestrymanagement.hibernatecontroller.Admin;
+
+public interface AdminDao {
+	public Admin adminLogin(int adminId, String adminName, String password);
+}

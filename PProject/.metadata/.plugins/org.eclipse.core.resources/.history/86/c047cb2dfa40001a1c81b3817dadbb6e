@@ -1,0 +1,49 @@
+package com.capgemini.springrestforestrymanagement.dto;
+
+import java.util.List;
+
+public class LandResponce {
+
+	private int statusCode;
+	private String message;
+	private String description;
+	private List<LandBean> beans;
+
+	public int getStatusCode() {
+		return statusCode;
+	}
+
+	public void setStatusCode(int statusCode) {
+		this.statusCode = statusCode;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public List<LandBean> getBeans() {
+		return beans;
+	}
+
+	public void setBeans(List<LandBean> beans) {
+		this.beans = beans;
+	}
+
+	public void setLandBean(List<LandBean> asList) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

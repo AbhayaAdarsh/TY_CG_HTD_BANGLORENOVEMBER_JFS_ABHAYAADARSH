@@ -1,0 +1,34 @@
+package com.capgemini.forestrymanagement.hibernatedao;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import com.capgemini.forestrymanagement.hibernatebean.SchedularBean;
+
+
+class SchedularDaoImplTest {
+	SchedularBean schedularBean = null;
+	SchedularDaoImpl schedularDao = null;
+	@BeforeEach
+	void loadDriver() {
+	schedularDao = new SchedularDaoImpl();
+	}
+	@Test
+	void testAddSchedular() {
+		schedularBean = new SchedularBean();
+		schedularBean.setschedulerId(67);
+		schedularBean.setschedularQuantity(21);
+		boolean check = schedularDao.addSchedular(schedularBean);
+		assertTrue(check);
+	}
+
+	@Test
+	void testModifySchedular() {
+	}
+
+	@Test
+	void testDeleteSchedular() {
+	}
+
+}

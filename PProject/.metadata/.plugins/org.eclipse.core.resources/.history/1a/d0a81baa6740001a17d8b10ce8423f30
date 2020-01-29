@@ -1,0 +1,28 @@
+package com.capgemini.forestrymanagement.collectiondao;
+
+import org.junit.jupiter.api.Test;
+
+class ClientDaoImplTest {
+
+	@Test
+	void testAddClient() {
+		
+	}
+
+	@Test
+	void testDeleteClient() {
+	}
+
+	@Test
+	void testUpdateClient() {
+	}
+
+	@Test
+	void testGetClient() {
+	}
+
+	@Test
+	void testGetAllClient() {
+	}
+
+}

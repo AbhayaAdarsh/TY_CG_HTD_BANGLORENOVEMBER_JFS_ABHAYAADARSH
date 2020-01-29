@@ -1,0 +1,15 @@
+package com.capgemini.forestrymanagementsystem.hibernateforestrymanagementsystem.hibernatemanager;
+
+import com.capgemini.forestrymanagementsystem.hibernateforestrymanagementsystem.hibernatedao.ProductDao;
+import com.capgemini.forestrymanagementsystem.hibernateforestrymanagementsystem.hibernatedao.ProductDaoImpl;
+
+public class ProductDaoManager {
+	public static ProductDao instanceOfProductDaoImpl() {
+		ProductDao dao = new ProductDaoImpl();
+		return dao;
+	}
+
+	public static ProductDao getProductdao() {
+		return null;
+	}
+}

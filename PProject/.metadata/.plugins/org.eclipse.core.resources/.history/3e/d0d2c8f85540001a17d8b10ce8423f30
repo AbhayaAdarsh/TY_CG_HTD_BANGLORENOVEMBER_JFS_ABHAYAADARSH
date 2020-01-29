@@ -1,0 +1,14 @@
+package com.capgemini.forestrymanagement.collectionjunittest;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class LandDaoTest {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,79 @@
+package com.capgemini.forestrymanagement.collectionjunittest;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.capgemini.forestrymanagement.collectionbean.ContractorBean;
+import com.capgemini.forestrymanagement.collectiondao.ContractorDaoImpl;
+
+
+class ContractorDaoTest {
+
+	ContractorBean contract = new ContractorBean();
+	ContractorDaoImpl dao = new ContractorDaoImpl();
+	
+	@BeforeEach
+	void load() {
+		contract.setContractid("CR-01");
+		contract.setCustomerId("CS-901");
+		contract.setProductId("PR-00");
+		contract.setHaulierId("HR-00");
+		contract.setDeliveryDate("28/01/2020");
+		contract.setDeliveryDay("Tuesday");
+		contract.setQuantity(25);
+	} 
+	
+	@Test
+	void testAddContract() {
+		ContractorBean contract=new ContractorBean();
+		contract.setContractid("CR-02");
+		contract.setCustomerId("CS-901");
+		contract.setProductId("PR-00");
+		contract.setHaulierId("HR-00");
+		contract.setDeliveryDate("28/01/2020");
+		contract.setDeliveryDay("Tuesday");
+		contract.setQuantity(25);
+
+		try {
+			boolean flag = dao.addContract(contract);
+			assertEquals(flag, true);
+		} catch (Exception e) {
+			assertThrows(InvalidDataException.class, () -> {
+				dao.addContract(contract);
+			});
+		}
+	}
+
+	@Test
+	void testDeleteContract() {
+		contract=new ContractorBean();
+		contract.setContractid("RE-00");
+		try {
+			boolean flag = dao.deleteContract(contract.getContractid());
+			assertEquals(flag, false);
+		} catch (Exception e) {
+			assertThrows(InvalidDataException.class, () -> {
+				dao.deleteContract(contract.getContractid());
+			});
+		}
+	}
+
+	@Test
+	void testGetAllContract() {
+		contract=new ContractorBean();
+		try {
+			dao.getAllContract();
+			assertEquals(dao, dao);
+		} catch (Exception e) {
+			assertThrows(InvalidDataException.class, () -> {
+				dao.getAllContract();
+			});
+		}
+	}
+
+	
+
+	
+
+}

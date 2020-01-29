@@ -1,0 +1,51 @@
+package com.capgemini.forestrymanagement.hibernatecontroller;
+
+import java.awt.PageAttributes.MediaType;
+import java.util.Arrays;
+
+import com.capgemini.forestrymanagement.hibernatebean.AdminBean;
+import com.capgemini.forestrymanagement.hibernatebean.AdminResponce;
+
+public class Admin {
+
+	@Autowired
+	private AdminService service;
+
+	@PostMapping(path = "/registerAdmin", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public AdminResponce register(@RequestBody AdminBean bean) {
+		AdminResponce responce = new AdminResponce();
+		if (service.register(bean)) {
+			responce.setStatusCode(400);
+			responce.setMessage("Success");
+			responce.setDescription("Admin Registered.");
+		} else {
+			responce.setStatusCode(404);
+			responce.setMessage("Failure");
+			responce.setDescription("Admin already exsist");
+		}
+		return responce;
+	}
+
+	@SuppressWarnings("static-access")
+	@GetMapping(path="/loginAdmin",produces = MediaType.APPLICATION_JSON_VALUE)
+	public AdminResponce login(@RequestParam("adminId") int adminId, @RequestParam("password") String password) {
+		AdminResponce response=new AdminResponce();
+		AdminBean bean=service.login(adminId,password);
+			if(bean.getAdminId().equals(adminId) &&((String) bean.getPassword()).equalsIgnoreCase(password)) {
+			response.setStatusCode(201);
+			response.setMessage("Success");
+			response.setDescription("Login Successful...");
+			response.setAdminBean(Arrays.asList(bean));
+		} else {
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("Incorrect credentials!!!");
+		}
+		return response;
+	}
+
+	public static void admin() {
+		// TODO Auto-generated method stub
+		
+	}
+}

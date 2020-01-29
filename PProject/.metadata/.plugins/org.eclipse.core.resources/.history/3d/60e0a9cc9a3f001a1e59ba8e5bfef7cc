@@ -1,0 +1,10 @@
+package com.capgemini.forestrymanagement.hibernatemanager;
+
+import com.capgemini.forestrymanagement.hibernatedao.AdminDao;
+import com.capgemini.forestrymanagement.hibernatedao.AdminDaoImpl;
+
+public class AdminDaoManager {
+	public static AdminDao getAdmindao() {
+		return new AdminDaoImpl();
+	}
+}

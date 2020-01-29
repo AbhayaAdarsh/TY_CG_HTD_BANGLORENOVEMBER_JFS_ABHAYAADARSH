@@ -1,0 +1,19 @@
+package com.capgemini.forestrymanagement.hibernatedao;
+
+import org.junit.jupiter.api.Test;
+
+class LandDaoImplTest {
+
+	@Test
+	void testAddLand() { 
+	}
+
+	@Test
+	void testDeleteLand() {
+	}
+
+	@Test
+	void testModifyLand() {
+	}
+
+}

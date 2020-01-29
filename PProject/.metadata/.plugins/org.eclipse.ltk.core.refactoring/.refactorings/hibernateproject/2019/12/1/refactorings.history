@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.capgemini.forestrymanagement.service.ContactorService&apos; to &apos;ContractorService&apos;&#x0D;&#x0A;- Original project: &apos;hibernetproject&apos;&#x0D;&#x0A;- Original element: &apos;com.capgemini.forestrymanagement.service.ContactorService&apos;&#x0D;&#x0A;- Renamed element: &apos;com.capgemini.forestrymanagement.service.ContractorService&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;ContactorService&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;com.capgemini.forestrymanagement.service{ContactorService.java[ContactorService" matchStrategy="1" name="ContractorService" qualified="false" references="true" similarDeclarations="false" stamp="1577822805308" textual="false" version="1.0"/>
+</session>

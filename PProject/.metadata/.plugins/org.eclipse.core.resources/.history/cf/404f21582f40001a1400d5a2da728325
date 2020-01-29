@@ -1,0 +1,21 @@
+package com.capgemini.forestrymanagement.hibernatedao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ContractorDaoImplTest {
+
+	@Test
+	void testAddContractor() {
+	}
+
+	@Test
+	void testDeleteContractor() {
+	}
+	
+	@Test
+	void testGetAllContractor() {
+	}
+
+}

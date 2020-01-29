@@ -1,0 +1,46 @@
+package com.capgemini.springrestforestrymanagement.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import com.capgemini.springrestforestrymanagement.dto.ContractorBean;
+import com.capgemini.springrestforestrymanagement.dto.CustomerBean;
+
+class CustomerDAOImplTest {
+
+	@Test
+	void testGetAllCustomer() {
+	}
+
+	@Test
+	void testUpdateCustomer() {
+	}
+
+	@Test
+	void testDeleteCustomer() {
+	}
+
+	@Test
+	void testAddCustomer() {
+		CustomerBean bean=new CustomerBean();
+		bean.setCid(10);
+		bean.setName("Abhaya");
+		bean.setTown("54");
+		bean.setPostal(44);
+		bean.setEmail("abhaya.adarsh148@gmail.com");
+		bean.setPassword("abhaya");
+		Assertions.assertTrue(true);
+		Assertions.assertNotNull(bean);
+	}
+
+	@Test
+	void testSearchCustomer() {
+	}
+
+	@Test
+	void testCustomerlogin() {
+	}
+
+}

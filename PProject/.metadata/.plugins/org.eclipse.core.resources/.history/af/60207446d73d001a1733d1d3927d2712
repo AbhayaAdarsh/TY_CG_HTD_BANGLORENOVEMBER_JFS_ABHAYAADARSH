@@ -1,0 +1,48 @@
+
+package com.capgemini.forestrymanagement.springbootdto;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name = "contractor")
+public class ContractorBean {
+	@Id
+	@GeneratedValue
+	@Column(nullable = false)
+	private int contractNo;
+	@Column(nullable = false)
+	private int customerId;
+	@Column(nullable = false)
+	private int productId;
+	@Column(nullable = false)
+	private int haulierId;
+	@Column(nullable = false)
+	private String deliveryDate;
+	@Column(nullable = false)
+	private String deliveryDay;
+	@Column(nullable = false)
+	private int quantity;
+	public Object getContractorId() {
+		return null;
+	}
+	public void setContractorId(Object contractorId2) {
+	}
+	public Object getContractorName() {
+		return null;
+	}
+	public void setContractorName(Object contractorName2) {
+	}
+	public Object getContractorPassword() {
+		return null;
+	}
+	public void setContractorPassword(Object contractorPassword2) {
+	}
+
+}

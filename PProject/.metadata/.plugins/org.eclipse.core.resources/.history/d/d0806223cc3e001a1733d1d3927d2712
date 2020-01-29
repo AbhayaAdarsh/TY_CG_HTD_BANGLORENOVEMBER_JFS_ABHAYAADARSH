@@ -1,0 +1,17 @@
+package com.capgemini.springrestforestrymanagement.service;
+
+import java.util.List;
+
+import com.capgemini.springrestforestrymanagement.dto.ContractorBean;
+
+public interface ContractorServices {
+	public boolean addContractor(ContractorBean bean);
+
+	public boolean updateContractor(int contractorid, ContractorBean bean);
+
+	public boolean deleteContractor(int contractorid);
+
+	public ContractorBean getContractor(int contractorid);
+
+	public List<ContractorBean> getAllContractor();
+}

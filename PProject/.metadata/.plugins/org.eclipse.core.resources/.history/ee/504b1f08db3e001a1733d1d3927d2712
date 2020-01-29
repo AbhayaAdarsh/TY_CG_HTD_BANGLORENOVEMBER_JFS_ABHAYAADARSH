@@ -1,0 +1,16 @@
+package com.capgemini.forestrymanagement.springbootservice;
+
+import java.util.List;
+import com.capgemini.forestrymanagement.springbootdto.ClientBean;
+
+public interface ClientServices {
+	public boolean addClient(ClientBean bean);
+
+	public boolean deleteClient(int clientid);
+
+	public boolean updateClient(int clientid, ClientBean bean);
+
+	public ClientBean getClient(int clientid);
+
+	public List<ClientBean> getAllClient();
+}

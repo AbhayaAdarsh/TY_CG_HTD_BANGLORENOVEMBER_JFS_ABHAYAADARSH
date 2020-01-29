@@ -1,0 +1,17 @@
+package com.capgimini.forestmanagentsystem.dao;
+
+import java.util.List;
+
+import com.capgimini.forestmanagentsystem.dto.OrderBean;
+
+public interface OrderDAO {
+	
+	public List<OrderBean> getAllOrders();
+	public boolean updateOrder(OrderBean bean);
+	public boolean deleteOrder(int orderNo);
+	boolean addOrder(OrderBean bean);
+	
+	
+	
+
+}

@@ -1,0 +1,11 @@
+package com.capgemini.forestrymanagement.collectiondao;
+
+import com.capgemini.forestrymanagement.collectionbean.AdminBean;
+
+public interface AdminDao {
+	public int AuthenticateAdmin(AdminBean adminbean);
+
+	public int AuthenticateClient(AdminBean adminbean);
+
+	public int AuthenticateSchedular(AdminBean adminbean);
+}

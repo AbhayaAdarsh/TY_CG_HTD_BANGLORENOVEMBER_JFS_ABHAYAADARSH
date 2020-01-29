@@ -1,0 +1,48 @@
+package com.capgemini.springrestforestrymanagement.dao;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import com.capgemini.springrestforestrymanagement.config.ORMConfig;
+import com.capgemini.springrestforestrymanagement.dto.ContractorBean;
+
+@SpringJUnitConfig(classes= {TestConfig.class, ORMConfig.class})
+class ContractorDAOImplTest {
+
+	@Autowired
+	private ContractorDAO contractDao ;
+	
+	@Test
+	void testGetAllContarctor() {
+		
+	}
+
+	@Test
+	void testGetAllContarctorInt() {
+	}
+
+	@Test
+	void testUpdateContarctor() {
+	}
+
+	@Test
+	void testDeletecontarctor() {
+	}
+
+	@Test
+	void testAddContarctor() {
+		ContractorBean bean=new ContractorBean();
+		bean.setContractId(10);
+		bean.setCustomerId(5);
+		bean.setHaulierId("54");
+		bean.setProductId(44);
+		bean.setDeliveryDate("12/3/2020");
+		bean.setQunatity(3);
+		assertTrue(contractDao.addContarctor(bean));
+	}
+
+	@Test
+	void testSearchContarctor() {
+	}
+
+}

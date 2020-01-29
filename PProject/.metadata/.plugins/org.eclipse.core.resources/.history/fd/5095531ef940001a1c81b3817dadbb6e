@@ -1,0 +1,15 @@
+package com.capgemini.springrestforestrymanagement.dao;
+
+import java.util.List;
+
+import com.capgemini.springrestforestrymanagement.dto.LandBean;
+
+public interface LandDao {
+	public boolean addLand(LandBean bean);
+
+	public boolean deleteLand(int landno);
+
+	public boolean updateLand(int landno, LandBean bean);
+
+	public List<LandBean> getAllLand();
+}

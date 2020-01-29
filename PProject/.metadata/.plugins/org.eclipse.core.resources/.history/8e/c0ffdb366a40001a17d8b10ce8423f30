@@ -1,0 +1,67 @@
+package com.capgemini.forestrymanagement.collectiondao;
+
+import java.util.ArrayList;
+import java.util.List;
+import com.capgemini.forestrymanagement.collectionbean.ClientBean;
+
+public class ClientDaoImpl implements ClientDao {
+	private List<ClientBean> clientBean = new ArrayList<ClientBean>();
+
+	@Override
+	public boolean addClient(ClientBean bean) {
+		for (ClientBean clientBean2 : clientBean) {
+			if (clientBean2.getClientid() == bean.getClientid()) {
+				return false;
+			}
+
+		}
+		clientBean.add(bean);
+		return true;
+	}
+
+	@Override
+	public boolean deleteClient(int clientid) {
+		ClientBean bean = null;
+		for (ClientBean clientBean2 : clientBean) {
+			if (clientBean2.getClientid() == clientid) {
+				bean = clientBean2;
+			}
+
+		}
+		if (bean != null) {
+			clientBean.remove(bean);
+			return true;
+		}
+
+		return false;
+	}
+
+	@Override
+	public boolean updateClient(ClientBean bean) {
+		for (ClientBean clientBean2 : clientBean) {
+			if (clientBean2.getClientid() == bean.getClientid()) {
+				return false;
+			}
+
+		}
+		clientBean.add(bean);
+		return true;
+	}
+
+	@Override
+	public ClientBean getClient(int clientid) {
+		for (ClientBean clientBean2 : clientBean) {
+			if (clientBean2.getClientid() == clientid) {
+				return clientBean2;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public List<ClientBean> getAllClient() {
+
+		return clientBean;
+	}
+
+}

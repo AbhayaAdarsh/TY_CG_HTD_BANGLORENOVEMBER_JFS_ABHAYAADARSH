@@ -1,0 +1,23 @@
+package com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcdao;
+
+import junit.framework.TestCase;
+
+public class AdminDaoImplTest extends TestCase {
+
+	public void testAdminDaoImpl() {
+		fail("Not yet implemented");
+	}
+
+	public void testAuthenticateAdmin() {
+		fail("Not yet implemented");
+	}
+
+	public void testAuthenticateClient() {
+		fail("Not yet implemented");
+	}
+
+	public void testAuthenticateSchedular() {
+		fail("Not yet implemented");
+	}
+
+}

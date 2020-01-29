@@ -1,0 +1,30 @@
+package com.capgemini.springrestforestrymanagement.dao;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class ClientDaoImplTest {
+
+	@Test
+	void testAddClient() {
+		
+	}
+
+	@Test
+	void testDeleteClient() {
+	}
+
+	@Test
+	void testUpdateClient() {
+	}
+
+	@Test
+	void testGetClient() {
+	}
+
+	@Test
+	void testGetAllClient() {
+	}
+
+}

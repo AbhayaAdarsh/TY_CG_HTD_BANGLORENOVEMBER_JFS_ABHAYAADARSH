@@ -1,0 +1,39 @@
+package com.capgemini.springrestforestrymanagement.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class CustomerDAOImplTest {
+
+	@Test
+	void testGetAllCustomer() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateCustomer() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteCustomer() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testAddCustomer() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testSearchCustomer() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testCustomerlogin() {
+		fail("Not yet implemented");
+	}
+
+}

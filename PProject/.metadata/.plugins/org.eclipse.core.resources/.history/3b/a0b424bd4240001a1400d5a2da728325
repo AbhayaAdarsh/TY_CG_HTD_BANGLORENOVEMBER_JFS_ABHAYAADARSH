@@ -1,0 +1,82 @@
+package com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcdao;
+
+import java.io.FileReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+import java.util.Properties;
+
+import com.capgemini.forestrymanagement.jdbcbean.LandBean;
+
+public class LandDaoImpl implements LandDao {
+	FileReader reader;
+	Properties prop;
+	LandBean bean;
+
+	public LandDaoImpl() {
+		try {
+			reader = new FileReader("Land.properties");
+			prop = new Properties();
+			prop.load(reader);
+			bean = new LandBean();
+			Class.forName(prop.getProperty("driverClass"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public boolean addLand(LandBean bean) {
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("insertQuery"));) {
+			pstmt.setInt(1, bean.getLandNo());
+			pstmt.setString(2, bean.getLandlordName());
+			pstmt.setString(3, bean.getLandDetails());
+			pstmt.setString(4, bean.getTenantDetails());
+			int count = pstmt.executeUpdate();
+			if (count > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteLand(int Landid) {
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("deleteQuery"));) {
+			pstmt.setInt(1, Landid);
+			int count = pstmt.executeUpdate();
+			if (count > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean modifyLand(LandBean bean) {
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("updateQuery"));) {
+			pstmt.setInt(1, bean.getLandNo());
+			pstmt.setString(2, bean.getLandlordName());
+			pstmt.setString(3, bean.getLandDetails());
+			pstmt.setString(4, bean.getTenantDetails());
+			int count = pstmt.executeUpdate();
+			if (count > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+}

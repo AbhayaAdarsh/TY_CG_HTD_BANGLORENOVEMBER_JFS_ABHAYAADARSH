@@ -1,0 +1,11 @@
+package com.capgemini.springrestforestrymanagement.exception;
+
+@SuppressWarnings("serial")
+public class ForestryException extends RuntimeException{
+
+	public ForestryException(String errorMessage ){
+		super(errorMessage);
+		
+	}
+
+}

@@ -1,0 +1,19 @@
+package com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcmanager;
+
+import com.capgemini.forestrymanagement.jdbcdao.ProductDao;
+import com.capgemini.forestrymanagement.jdbcdao.ProductDaoImpl;
+import com.capgemini.forestrymanagement.jdbcservice.ProductServices;
+import com.capgemini.forestrymanagement.jdbcservice.ProductServiceImpl;
+
+public class ProductDaoManager {
+
+	public static ProductDao instanceOfProductDaoImpl() {
+		ProductDao dao = new ProductDaoImpl();
+		return dao;
+	}
+
+	public static ProductServices instanceOfProductServiceImpl() {
+		ProductServiceImpl services = new ProductServiceImpl();
+		return services;
+	}
+}

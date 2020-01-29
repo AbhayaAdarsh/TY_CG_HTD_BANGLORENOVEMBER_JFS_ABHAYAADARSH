@@ -1,0 +1,46 @@
+package com.capgemini.springrestforestrymanagement.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.capgemini.springrestforestrymanagement.dao.AdminDao;
+import com.capgemini.springrestforestrymanagement.dto.AdminBean;
+import com.capgemini.springrestforestrymanagement.exception.AdminException;
+
+@Service
+public class AdminServiceImpl implements AdminService {
+	@Autowired
+	private AdminDao dao;
+
+	@Override
+	public boolean register(AdminBean bean) {
+		return dao.register(bean);
+	}
+	
+	@Override
+	public boolean updateAdmin(int adminId, AdminBean bean) {
+		return dao.updateAdmin(adminId, bean);
+	}
+
+	@Override
+	public boolean deleteAdmin(int adminId) throws AdminException {
+		return dao.deleteAdmin(adminId);
+	}
+
+	@Override
+	public List<AdminBean> getAllAdmin() {
+		return dao.getAllAdmin();
+	}
+
+	@Override
+	public List<AdminBean> getAdmin(int adminId) {
+		return null;
+	}
+
+	@Override
+	public AdminBean addAdmin(int adminId, String password) {
+		return null;
+	}
+}

@@ -1,0 +1,61 @@
+package com.capgimini.forestmanagentsystem.dao;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.capgimini.forestmanagentsystem.dto.OrderBean;
+import com.capgimini.forestmanagentsystem.dto.OrderBean;
+
+class OrderDAOImplTest {
+
+	@Autowired
+	private OrderDAO OrderDao;
+	
+	@Test
+	void testAddOrder() {
+		OrderBean bean = new OrderBean();
+		  bean.setOrderNo(11);
+			bean.setCustomerId(111);
+			bean.setProductId(123);
+			bean.setQuantity(100);
+			bean.setDeliveryDate("14/02/2020");
+			bean.setDeliveryDay("sunday");
+			bean.setOrderNo(1234);
+			assertTrue(OrderDao.addOrder(bean));
+	}
+
+	@Test
+	void testGetOrder() {
+		OrderBean Order = OrderDao.getOrder(5);
+	    assertNotNull(Order);
+	}
+
+	@Test
+	void testGetAllOrders() {
+		List<OrderBean> beans = OrderDao.getAllOrders();
+		assertNotNull(beans);
+	}
+
+	@Test
+	void testUpdateOrder() {
+		OrderBean bean1 = new OrderBean();
+		bean1.setOrderNo(5);
+		bean1.setCustomerId(101);
+		bean1.setProductId(45);
+		bean1.setQuantity(50);
+		bean1.setDeliveryDate("18/02/2020");
+		bean1.setDeliveryDay("Monday");
+		bean1.setOrderNo(55);
+	    assertTrue(OrderDao.updateOrder(bean1));
+	}
+
+	@Test
+	void testDeleteOrder() {
+	}
+
+}

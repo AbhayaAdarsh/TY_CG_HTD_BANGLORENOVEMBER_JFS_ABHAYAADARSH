@@ -1,0 +1,13 @@
+package com.capgemini.springrestforestrymanagement.exception;
+
+@SuppressWarnings("serial")
+public class SchedularException extends RuntimeException {
+
+	public SchedularException(String message) {
+		super(message);
+	}
+
+	public void getMessage(String string) {
+	}
+
+}

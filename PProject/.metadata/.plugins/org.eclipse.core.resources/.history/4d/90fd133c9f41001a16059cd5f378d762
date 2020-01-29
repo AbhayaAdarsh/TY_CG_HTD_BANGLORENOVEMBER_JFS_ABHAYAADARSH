@@ -1,0 +1,25 @@
+package com.capgimini.forestmanagentsystem.dao;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import java.util.List;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import com.capgimini.forestmanagentsystem.dto.ContractBean;
+
+@SpringBootTest
+class ContractDAOImplTest {
+
+	@Autowired
+	private ContractDAO contractDao ;
+	
+
+	@Test
+	void testGetAllContracts() {
+		List<ContractBean> beans = contractDao.getAllContracts();
+		assertNotNull(beans);
+	}
+
+
+}

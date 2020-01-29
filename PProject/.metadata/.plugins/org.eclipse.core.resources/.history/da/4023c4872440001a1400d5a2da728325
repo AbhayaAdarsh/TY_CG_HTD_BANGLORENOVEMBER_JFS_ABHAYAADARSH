@@ -1,0 +1,14 @@
+package com.capgemini.forestrymanagement.hibernatedao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class AdminDaoImplTest {
+
+	@Test
+	void testAdminLogin() {
+		fail("Not yet implemented");
+	}
+
+}

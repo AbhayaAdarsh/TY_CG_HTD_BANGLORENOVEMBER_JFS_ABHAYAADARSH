@@ -1,0 +1,5 @@
+package com.capgemini.forestrymanagement.hibernatecontroller;
+
+public class Admin {
+
+}

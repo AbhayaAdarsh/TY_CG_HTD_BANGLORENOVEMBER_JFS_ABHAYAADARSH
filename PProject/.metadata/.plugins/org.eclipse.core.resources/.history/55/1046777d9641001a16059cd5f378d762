@@ -1,0 +1,45 @@
+package com.capgimini.forestmanagentsystem.dao;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.jupiter.api.Test;
+
+import com.capgimini.forestmanagentsystem.dto.OrderBean;
+
+class OrderDAOImplTest {
+
+	@Test
+	void testAddOrder() {
+		OrderBean bean = new OrderBean();
+		  bean.setOrderId(11);
+			bean.setOrderName("jyo");
+			bean.setAddress1("tpt");
+			bean.setAddress2("bnglr");
+			bean.setTown("sdf");
+			bean.setPostalCode(787879);
+			bean.setEmail("jyo@gmail.com");
+			bean.setTelephone(987654987);
+			assertTrue(OrderDao.addOrder(bean));
+	}
+
+	@Test
+	void testGetOrder() {
+		OrderBean Order = OrderDAO.getOrder(5);
+	    assertNotNull(Order);
+	}
+
+	@Test
+	void testGetAllOrders() {
+		
+	}
+
+	@Test
+	void testUpdateOrder() {
+	}
+
+	@Test
+	void testDeleteOrder() {
+	}
+
+}

@@ -1,0 +1,14 @@
+package com.capgemini.forestrymanagement.collectiondao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class SchedularDaoImplTest {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

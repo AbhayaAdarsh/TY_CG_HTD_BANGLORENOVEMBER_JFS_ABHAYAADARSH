@@ -1,0 +1,102 @@
+package com.capgemini.springrestforestrymanagement.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.capgemini.springrestforestrymanagement.dto.AdminBean;
+import com.capgemini.springrestforestrymanagement.dto.AdminResponce;
+import com.capgemini.springrestforestrymanagement.exception.AdminException;
+import com.capgemini.springrestforestrymanagement.service.AdminService;
+
+@RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*", allowCredentials = "true")
+public class AdminController {
+
+	@Autowired
+	private AdminService service;	
+
+	@PostMapping(path = "/addAdmin", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public AdminResponce register(@RequestBody AdminBean bean) {
+		AdminResponce responce = new AdminResponce();
+		if (service.register(bean)) {
+			responce.setStatusCode(400);
+			responce.setMessage("Success");
+			responce.setDescription("Admin Registered.");
+		} else {
+			responce.setStatusCode(404);
+			responce.setMessage("Failure");
+			responce.setDescription("Admin already exsist");
+		}
+		return responce;
+	}
+
+	@GetMapping(path = "/adminLogin", produces = MediaType.APPLICATION_JSON_VALUE)
+	public AdminResponce login(@RequestParam("adminId") int adminId,@RequestParam("adminPassword") int adminPassword) {
+		AdminResponce responce = new AdminResponce();
+		AdminBean bean = service.login(adminId ,adminPassword);
+				if () {
+			responce.setStatusCode(201);
+			responce.setMessage("Success");
+			responce.setDescription("Employearch Successful");
+		} else {
+			responce.setStatusCode(401);
+			responce.setMessage("Failure");
+			responce.setDescription("Data not Found!!! ");
+		}
+		return responce;
+	}
+
+	@GetMapping(path = "/getAllAdmin", produces = MediaType.APPLICATION_JSON_VALUE)
+	public AdminResponce getAllAdmin() {
+		AdminResponce responce = new AdminResponce();
+		List<AdminBean> beans = service.getAllAdmin();
+		if (beans == null) {
+			responce.setStatusCode(201);
+			responce.setMessage("Success");
+			responce.setDescription("All Admin Found.");
+		} else {
+			responce.setStatusCode(401);
+			responce.setMessage("Failure");
+			responce.setDescription("Data not Found!!! ");
+		}
+		return responce;
+	}
+
+	@PutMapping(path = "/updateAdmin", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public AdminResponce updateAdmin(@RequestBody AdminBean bean, int adminId) {
+		AdminResponce response = new AdminResponce();
+		if (service.updateAdmin(adminId,bean)) {
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription("Admin updated");
+		} else {
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("Admin is not updated");
+		}
+		return response;
+	}
+
+	@DeleteMapping(path = "/deleteAdmin/{adminId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public AdminResponce deleteEmployee(@PathVariable("adminId") int adminId) throws AdminException {
+		AdminResponce responce = new AdminResponce();
+		service.deleteAdmin(adminId);
+		responce.setStatusCode(201);
+		responce.setMessage("Success");
+		responce.setDescription("Admin Details Deleted");
+		return responce;
+	}
+
+	
+}

@@ -1,0 +1,102 @@
+package com.capgemini.springrestforestrymanagement.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.capgemini.springrestforestrymanagement.dto.CustomerBean;
+import com.capgemini.springrestforestrymanagement.dto.CustomerResponce;
+import com.capgemini.springrestforestrymanagement.exception.CustomerException;
+import com.capgemini.springrestforestrymanagement.service.CustomerService;
+
+@RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*", allowCredentials = "true")
+public class CustomerController {
+	@Autowired
+	private CustomerService service;
+
+	@PostMapping(path = "/registerCustomer", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public CustomerResponce addCustomer(@RequestBody CustomerBean bean) {
+		CustomerResponce responce = new CustomerResponce();
+		if (service.registerCustomer(bean)) {
+			responce.setStatusCode(201);
+			responce.setMessage("Success");
+			responce.setDescription("Customer Registered.");
+		} else {
+			responce.setStatusCode(401);
+			responce.setMessage("Failure");
+			responce.setDescription("Customer already exsist");
+		}
+		return responce;
+	}
+	
+	@GetMapping(path = "/getCustomer", produces = MediaType.APPLICATION_JSON_VALUE)
+	public CustomerResponce getCustomer(@RequestParam("customerId") int customerId) {
+		CustomerResponce responce = new CustomerResponce();
+		CustomerBean beans = service.getCustomer(customerId);
+		if (beans.isEmpty()) {
+			responce.setStatusCode(201);
+			responce.setMessage("Success");
+			responce.setDescription("Customer search Successful");
+		} else {
+			responce.setStatusCode(401);
+			responce.setMessage("Failure");
+			responce.setDescription("Data not Found!!! ");
+		}
+		return responce;
+	}
+
+	@GetMapping(path = "/getAllCustomer", produces = MediaType.APPLICATION_JSON_VALUE)
+	public CustomerResponce getAllLand() {
+		CustomerResponce responce = new CustomerResponce();
+		List<CustomerBean> beans = service.getAllCustomer();
+		if (beans == null) {
+			responce.setStatusCode(201);
+			responce.setMessage("Success");
+			responce.setDescription("All Customer Found.");
+		} else {
+			responce.setStatusCode(401);
+			responce.setMessage("Failure");
+			responce.setDescription("Data not Found!!! ");
+		}
+		return responce;
+	}
+
+	@PutMapping(path = "/updateCustomer", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public CustomerResponce updateCustomer(@RequestBody CustomerBean bean) {
+		CustomerResponce responce = new CustomerResponce();
+		CustomerBean beans = new CustomerBean();
+		beans.setCustomerId(bean.getCustomerId());
+		beans.setCustomerName(bean.getCustomerName());
+		if (service.updateCustomer(bean)) {
+			responce.setStatusCode(201);
+			responce.setMessage("Success");
+			responce.setDescription("Customer Updated Successfully....");
+		} else {
+			responce.setStatusCode(401);
+			responce.setMessage("Failure");
+			responce.setDescription("Unable to change number.");
+		}
+		return responce;
+	}
+	
+	@DeleteMapping(path = "/deleteCustomer", produces = MediaType.APPLICATION_JSON_VALUE)
+	public CustomerResponce deleteCustomer(@PathVariable("customerId") int customerId) throws CustomerException {
+		CustomerResponce responce = new CustomerResponce();
+		service.deleteCustomer(customerId);
+		responce.setStatusCode(201);
+		responce.setMessage("Success");
+		responce.setDescription("Customer Details Deleted");
+		return responce;
+	}
+}

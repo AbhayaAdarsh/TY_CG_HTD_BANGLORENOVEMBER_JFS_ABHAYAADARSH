@@ -1,0 +1,146 @@
+package com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcdao;
+
+import java.io.FileReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
+import com.capgemini.forestrymanagement.jdbcbean.ClientBean;
+
+public class ClientDaoImpl implements ClientDao {
+
+	FileReader reader;
+	Properties prop;
+	ClientBean client;
+
+	public ClientDaoImpl() {
+		try {
+			reader = new FileReader("client.properties");
+			prop = new Properties();
+			prop.load(reader);
+			client = new ClientBean();
+			Class.forName(prop.getProperty("driverClass"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public boolean addClient(ClientBean client) {
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("insertQuery"));) {
+			pstmt.setInt(1, client.getClientid());
+			pstmt.setString(2, client.getClientName());
+			pstmt.setString(3, client.getStreetAddress1());
+			pstmt.setString(4, client.getStreetAddress2());
+			pstmt.setString(5, client.getTown());
+			pstmt.setInt(6, client.getPostalCode());
+			pstmt.setString(7, client.getEmail());
+			pstmt.setString(8, client.getTelephoneNum());
+			int count = pstmt.executeUpdate();
+			if (count > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteClient(int clientid) {
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("deleteQuery"));) {
+			pstmt.setInt(1, clientid);
+			int count = pstmt.executeUpdate();
+			if (count > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean updateClient(ClientBean client) {
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("updateQuery"));) {
+			pstmt.setInt(8, client.getClientid());
+			pstmt.setString(1, client.getClientName());
+			pstmt.setString(2, client.getStreetAddress1());
+			pstmt.setString(3, client.getStreetAddress2());
+			pstmt.setString(4, client.getTown());
+			pstmt.setInt(5, client.getPostalCode());
+			pstmt.setString(6, client.getEmail());
+			pstmt.setString(7, client.getTelephoneNum());
+			int count = pstmt.executeUpdate();
+			if (count > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public ClientBean getClient(int clientid) {
+		@SuppressWarnings("unused")
+		List<ClientBean> list = new ArrayList<ClientBean>();
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("searchQuery"));) {
+			pstmt.setInt(1, clientid);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				client.setClientid(rs.getInt(1));
+				client.setClientName(rs.getString(2));
+				client.setStreetAddress1(rs.getString(3));
+				client.setStreetAddress2(rs.getString(4));
+				client.setTown(rs.getString(5));
+				client.setPostalCode(rs.getInt(6));
+				client.setEmail(rs.getString(7));
+				client.setTelephoneNum(rs.getString(8));
+			}
+			return client;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<ClientBean> getAllClient() {
+		List<ClientBean> list = new ArrayList<ClientBean>();
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(prop.getProperty("showAll"));) {
+			while (rs.next()) {
+				client = new ClientBean();
+				client.setClientid(rs.getInt(1));
+				client.setClientName(rs.getString(2));
+				client.setStreetAddress1(rs.getString(3));
+				client.setStreetAddress2(rs.getString(4));
+				client.setTown(rs.getString(5));
+				client.setPostalCode(rs.getInt(6));
+				client.setEmail(rs.getString(7));
+				client.setTelephoneNum(rs.getString(8));
+				list.add(client);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+}

@@ -1,0 +1,17 @@
+package com.capgemini.forestrymanagement.hibernatecontroller;
+
+import com.capgemini.forestrymanagement.hibernatebean.AdminResponce;
+import com.capgemini.forestrymanagement.hibernateexception.ForestryException;
+
+public class AdminControllerAdvice {
+	@ExceptionHandler(ForestryException.class)
+	public AdminResponce handleProductException(ForestryException e) {
+		AdminResponce adminResponce = new AdminResponce();
+		adminResponce.setStatusCode(501);
+		adminResponce.setMessage("Exception");
+		adminResponce.setDescription(e.getMessage());
+		return adminResponce;
+
+	}
+
+}

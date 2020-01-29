@@ -1,0 +1,18 @@
+package com.capgemini.springrestforestrymanagement.controller;
+
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import com.capgemini.springrestforestrymanagement.dto.SchedularResponce;
+import com.capgemini.springrestforestrymanagement.exception.SchedularException;
+
+public class SchedularControllerAdvice {
+
+	@ExceptionHandler(SchedularException.class)
+	public SchedularResponce handleSchedularException(SchedularException e) {
+		SchedularResponce schedularResponce = new SchedularResponce();
+		schedularResponce.setStatusCode(501);
+		schedularResponce.setMessage("Exception");
+		schedularResponce.setDescription(e.getMessage());
+		return schedularResponce;
+	}
+}

@@ -1,0 +1,15 @@
+package com.capgemini.springrestforestrymanagement.dao;
+
+import java.util.List;
+
+import com.capgemini.springrestforestrymanagement.dto.AdminBean;
+
+public interface AdminDao {
+	public boolean register(AdminBean bean);
+
+	public boolean updateAdmin(int id, AdminBean bean);
+
+	public boolean deleteAdmin(int id);
+
+	public List<AdminBean> getAllAdmin();
+}

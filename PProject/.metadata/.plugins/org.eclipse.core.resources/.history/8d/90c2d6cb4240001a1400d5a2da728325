@@ -1,0 +1,81 @@
+package com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcdao;
+
+import java.io.FileReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.Properties;
+
+import com.capgemini.forestrymanagement.jdbcbean.SchedularBean;
+
+public class SchedularDaoImpl implements SchedularDao {
+	FileReader reader;
+	Properties prop;
+	SchedularBean Schedular;
+
+	public SchedularDaoImpl() {
+		try {
+			reader = new FileReader("Schedular.properties");
+			prop = new Properties();
+			prop.load(reader);
+			Schedular = new SchedularBean();
+			Class.forName(prop.getProperty("driverClass"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public boolean addSchedular(SchedularBean Schedular) {
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("insertQuery"));) {
+			pstmt.setInt(1, Schedular.getSchedulerId());
+			pstmt.setString(2, Schedular.getSchedulerName());
+			pstmt.setString(3, Schedular.getDeliveryDate());
+			pstmt.setInt(4, Schedular.getQuantity());
+			int count = pstmt.executeUpdate();
+			if (count > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteSchedular(int Schedularid) {
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("deleteQuery"));) {
+			pstmt.setInt(1, Schedularid);
+			int count = pstmt.executeUpdate();
+			if (count > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean modifySchedular(SchedularBean Schedular) {
+		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("updateQuery"));) {
+			pstmt.setString(1, Schedular.getSchedulerName());
+			pstmt.setString(2, Schedular.getDeliveryDate());
+			pstmt.setInt(3, Schedular.getQuantity());
+			pstmt.setInt(4, Schedular.getSchedulerId());
+			int count = pstmt.executeUpdate();
+			if (count > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+}

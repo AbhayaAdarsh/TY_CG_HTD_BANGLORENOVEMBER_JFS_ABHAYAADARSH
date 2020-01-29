@@ -1,0 +1,46 @@
+package com.capgimini.forestmanagentsystem.dao;
+
+import static org.junit.Assert.assertTrue;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.capgimini.forestmanagentsystem.dto.CustomerBean;
+@SpringBootTest
+class HaulierDAOImplTest {
+
+	@Autowired
+	private CustomerDAO customerDao;
+	
+	@Test
+	void testAddHauiler() {
+		CustomerBean bean = new CustomerBean();
+		  bean.setCustomerId(11);
+			bean.setCustomerName("jyo");
+			bean.setAddress1("tpt");
+			bean.setAddress2("bnglr");
+			bean.setTown("sdf");
+			bean.setPostalCode(787879);
+			bean.setEmail("jyo@gmail.com");
+			bean.setTelephoneNo(987654987);
+			assertTrue(customerDao.addCustomer(bean));
+	}
+
+	@Test
+	void testGetHaulier() {
+	}
+
+	@Test
+	void testGetAllHauliers() {
+	}
+
+	@Test
+	void testUpdateHaulier() {
+	}
+
+	@Test
+	void testDeleteHaulier() {
+	}
+
+}

@@ -1,0 +1,29 @@
+package com.capgemini.forestrymanagement.hibernatedao;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+import com.capgemini.forestrymanagement.hibernatecontroller.Admin;
+
+public class AdminDaoImpl implements AdminDao {
+	EntityManagerFactory factory = Persistence.createEntityManagerFactory("Test");
+
+	@Override
+	public Admin adminLogin(int adminId, String adminName, String password) {
+		EntityManager manager = factory.createEntityManager();
+		String jpql = "from Admin where adminId=:adminId and adminName=:adminName and password=:password ";
+		Query query = manager.createQuery(jpql);
+		query.setParameter("adminId", adminId);
+		query.setParameter("adminName", adminName);
+		query.setParameter("password", password);
+		Admin admin = null;
+		try {
+			admin = (Admin) query.getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		manager.close();
+		return admin;
+	}
+}

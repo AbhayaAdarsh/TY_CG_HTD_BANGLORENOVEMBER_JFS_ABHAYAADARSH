@@ -1,0 +1,11 @@
+package com.capgemini.forestrymanagementsystem.hibernateforestrymanagementsystem.hibernatedao;
+
+public class AdminDao {
+	
+		public boolean register(Admin account);
+
+		public Admin login(Admin credentials);
+
+	
+
+}

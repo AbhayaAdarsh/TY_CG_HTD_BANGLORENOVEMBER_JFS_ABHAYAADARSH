@@ -1,0 +1,119 @@
+package com.capgemini.forestrymanagement.collectionjunittest;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
+
+import com.capgemini.forestmanagement.bean.CustomerBean;
+import com.capgemini.forestmanagement.dao.CustomerDaoImpl;
+import com.capgemini.forestmanagement.exception.InvalidDataException;
+
+public class CustomerDaoTest {
+
+	CustomerBean customer= new CustomerBean();
+	CustomerDaoImpl dao= new CustomerDaoImpl();
+	
+	@Test
+	void load() {
+		customer.setCustomerid("CR-01");
+		customer.setCustomerName("ria");
+		customer.setStreetAddress1("bnagalore");
+		customer.setStreetAddress2("bang");
+		customer.setTown("dbpur");
+		customer.setEmail("ria@gmail.com");
+		customer.setPostalCode(561203);
+		customer.setTelephoneNum(994571824);
+		
+		
+	}
+	@Test
+	void testAddCustomer() {
+		try {
+			CustomerBean customer=new CustomerBean();	
+		customer.setCustomerid("CR-02");
+		customer.setCustomerName("ria");
+		customer.setStreetAddress1("bnagalore");
+		customer.setStreetAddress2("bang");
+		customer.setTown("dbpur");
+		customer.setEmail("ria@gmail.com");
+		customer.setPostalCode(561203);
+		customer.setTelephoneNum(994571824);
+		
+		
+			boolean flag=dao.addCustomer(customer);
+			assertEquals(flag, true);
+		}catch(Exception e) {
+			assertThrows(InvalidDataException.class, () -> {
+				dao.addCustomer(customer);
+			});
+		}
+		
+	}
+
+	@Test
+	void testDeleteCustomer() {
+		customer = new CustomerBean();
+		customer.setCustomerid("CR-02");
+		try {
+			boolean flag = dao.deleteCustomer(customer.getCustomerid());
+			assertEquals(flag, false);
+		} catch (Exception e) {
+			assertThrows(InvalidDataException.class, () -> {
+				dao.deleteCustomer(customer.getCustomerid());
+			});
+		}
+
+	}
+
+	@Test
+	void testGetCustomer() {
+		customer= new CustomerBean();
+		customer.setCustomerid("CR-00");
+		try {
+			 dao.getCustomer(customer.getCustomerid());
+			assertEquals(dao, dao);
+		} catch (Exception e) {
+			assertThrows(InvalidDataException.class, () -> {
+				dao.getCustomer(customer.getCustomerid());
+			});
+		}
+	}
+
+	@Test
+	void testGetAllCustomer() {
+		customer=new CustomerBean();
+		try {
+			dao.getAllCustomer();
+			assertEquals(dao, dao);
+		} catch (Exception e) {
+			assertThrows(InvalidDataException.class, () -> {
+				dao.getAllCustomer();
+			});
+		}
+	}
+
+	@Test
+	void testModifyCustomer() {
+		try {
+		customer=new CustomerBean();
+		customer.setCustomerid("CR-01");
+		customer.setCustomerName("sia");
+		customer.setStreetAddress1("bangalore");
+		customer.setStreetAddress2("bang");
+		customer.setTown("dbpur");
+		customer.setEmail("ria@gmail.com");
+		customer.setPostalCode(561203);
+		customer.setTelephoneNum(994571824);
+		
+		
+			boolean flag=dao.modifyCustomer(customer);
+			assertEquals(flag, false);
+		}catch(Exception e) {
+			assertThrows(InvalidDataException.class, () -> {
+				dao.modifyCustomer(customer);
+			});
+		}
+		
+	}
+}

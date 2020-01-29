@@ -1,0 +1,24 @@
+package com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcservice;
+
+import com.capgemini.forestrymanagement.jdbcbean.ProductBean;
+import com.capgemini.forestrymanagement.jdbcdao.ProductDao;
+import com.capgemini.forestrymanagement.jdbcmanager.ProductDaoManager;
+
+public class ProductServiceImpl implements ProductServices {
+	ProductDao dao = ProductDaoManager.instanceOfProductDaoImpl();
+
+	@Override
+	public boolean addProduct(ProductBean bean) {
+		return dao.addProduct(bean);
+	}
+
+	@Override
+	public boolean modifyProduct(ProductBean bean) {
+		return dao.modifyProduct(bean);
+	}
+
+	@Override
+	public boolean deleteProduct(int productid) {
+		return dao.deleteProduct(productid);
+	}
+}

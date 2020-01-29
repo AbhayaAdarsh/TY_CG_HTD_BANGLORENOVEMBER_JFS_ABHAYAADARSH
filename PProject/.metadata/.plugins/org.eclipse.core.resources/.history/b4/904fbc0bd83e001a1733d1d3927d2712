@@ -1,0 +1,50 @@
+package com.capgemini.springrestforestrymanagement.dto;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Data;
+@Data
+@Entity
+@Table(name="client")
+public class ClientBean {
+	@Id
+	@GeneratedValue
+	@Column(nullable=false)
+	private int clientId;
+	@Column(nullable=false)
+	private String clientName;
+	@Column(nullable=false)
+	private String streetAddress1;
+	@Column(nullable=false)
+	private String streetAddress2;
+	@Column(nullable=false)
+	private String town;
+	@Column(nullable=false)
+	private int postalCode;
+	@Column(nullable=false)
+	private String email;
+	@Column(unique =true,nullable =false)
+	private String telephoneNum;
+	
+	
+	public Object getClientId() {
+		return null;
+	}
+	public Object getClientPassword() {
+		return null;
+	}
+	public void setClientId(Object clientId2) {
+	}
+	public void setClientPassword(Object clientPassword2) {
+	}
+	public Object getClientName() {
+		return null;
+	}
+	public void setClientName(Object clientName2) {
+	}	
+}
+

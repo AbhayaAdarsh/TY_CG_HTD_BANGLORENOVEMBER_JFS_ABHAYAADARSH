@@ -1,0 +1,19 @@
+package com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcdao;
+
+import junit.framework.TestCase;
+
+public class SchedularDaoImplTest extends TestCase {
+
+	public void testSchedularDaoImpl() {
+	}
+
+	public void testAddSchedular() {
+	}
+
+	public void testDeleteSchedular() {
+	}
+
+	public void testModifySchedular() {
+	}
+
+}

@@ -1,0 +1,32 @@
+package com.capgimini.forestmanagentsystem.dao;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class ProductDAOImplTest {
+
+	@Autowired
+	private ProductDao productDao;
+
+	@Test
+	void testAddProduct() {
+	}
+
+	@Test
+	void testGetProduct() {
+	}
+
+	@Test
+	void testGetAllProducts() {
+	}
+
+	@Test
+	void testDeleteProduct() {
+	}
+
+	@Test
+	void testUpdateProduct() {
+	}
+
+}

@@ -1,0 +1,19 @@
+package com.capgemini.forestrymanagement.collectiondao;
+
+import org.junit.jupiter.api.Test;
+
+class SchedularDaoImplTest {
+
+	@Test
+	void testAddSchedular() {
+	}
+
+	@Test
+	void testModifySchedular() {
+	}
+
+	@Test
+	void testDeleteSchedular() {
+	}
+
+}

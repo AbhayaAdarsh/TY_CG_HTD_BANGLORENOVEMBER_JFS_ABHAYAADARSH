@@ -1,0 +1,11 @@
+package com.capgemini.springrestforestrymanagement.manager;
+
+import com.capgemini.springrestforestrymanagement.dao.SchedularDao;
+
+public class SchedularDaoManager {
+
+	public static SchedularDao instanceOfSchedularDaoImpl() {
+		return null;
+	}
+
+}

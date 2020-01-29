@@ -1,0 +1,23 @@
+package com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcdao;
+
+import junit.framework.TestCase;
+
+public class LandDaoImplTest extends TestCase {
+
+	public void testLandDaoImpl() {
+		fail("Not yet implemented");
+	}
+
+	public void testAddLand() {
+		fail("Not yet implemented");
+	}
+
+	public void testDeleteLand() {
+		fail("Not yet implemented");
+	}
+
+	public void testModifyLand() {
+		fail("Not yet implemented");
+	}
+
+}

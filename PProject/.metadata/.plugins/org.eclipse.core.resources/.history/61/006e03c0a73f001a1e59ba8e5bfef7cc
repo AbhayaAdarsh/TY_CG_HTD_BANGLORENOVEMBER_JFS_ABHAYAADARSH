@@ -1,0 +1,5 @@
+package com.capgemini.forestrymanagementsystem.hibernateforestrymanagementsystem.hibernatedao;
+
+public class AdminDao {
+
+}

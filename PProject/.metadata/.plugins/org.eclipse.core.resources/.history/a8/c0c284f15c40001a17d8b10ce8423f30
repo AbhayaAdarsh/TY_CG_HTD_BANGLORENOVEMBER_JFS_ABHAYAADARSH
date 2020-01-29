@@ -1,0 +1,14 @@
+package com.capgimini.springbootforestrysystem;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SpringbootforestrysystemApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringbootforestrysystemApplication.class, args);
+	}
+
+}
+ye wala nahi h es k upper wala h

@@ -1,0 +1,31 @@
+package com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcdao;
+
+import junit.framework.TestCase;
+
+public class ContractorDaoImplTest extends TestCase {
+
+	public void testContractorDaoImpl() {
+		fail("Not yet implemented");
+	}
+
+	public void testAddContractor() {
+		fail("Not yet implemented");
+	}
+
+	public void testDeleteContractor() {
+		fail("Not yet implemented");
+	}
+
+	public void testModifyContractor() {
+		fail("Not yet implemented");
+	}
+
+	public void testGetContractor() {
+		fail("Not yet implemented");
+	}
+
+	public void testGetAllContractor() {
+		fail("Not yet implemented");
+	}
+
+}

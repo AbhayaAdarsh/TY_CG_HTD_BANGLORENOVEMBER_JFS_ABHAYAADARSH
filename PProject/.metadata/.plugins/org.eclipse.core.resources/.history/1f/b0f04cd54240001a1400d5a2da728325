@@ -1,0 +1,18 @@
+package com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcmanager;
+
+import com.capgemini.forestrymanagement.jdbcdao.AdminDao;
+import com.capgemini.forestrymanagement.jdbcdao.AdminDaoImpl;
+import com.capgemini.forestrymanagement.jdbcservice.AdminServiceImpl;
+import com.capgemini.forestrymanagement.jdbcservice.AdminService;
+
+public class AdminDaoManager {
+	public static AdminDao instanceOfAdminDaoImpl() {
+		AdminDao dao = new AdminDaoImpl();
+		return dao;
+	}
+
+	public static AdminService instanceOfAdminServiceImpl() {
+		AdminServiceImpl services = new AdminServiceImpl();
+		return services;
+	}
+}

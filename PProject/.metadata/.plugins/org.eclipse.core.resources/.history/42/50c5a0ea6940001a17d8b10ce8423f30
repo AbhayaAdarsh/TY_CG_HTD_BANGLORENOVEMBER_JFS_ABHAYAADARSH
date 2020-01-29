@@ -1,0 +1,51 @@
+package com.capgemini.forestrymanagement.collectiondao;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.capgemini.forestrymanagement.collectionbean.ClientBean;
+
+class ClientDaoImplTest {
+	ClientBean clientBean = null;
+    ClientDaoImpl clientDao = null;
+    @BeforeEach
+    void loadDriver() {
+   clientDao = new ClientDaoImpl();
+    }
+	@Test
+	void testAddClient() {
+		
+	}
+
+	@Test
+	void testDeleteClient() {
+		int clientId = 77;
+	    boolean check = clientDao.deleteClient(clientId);
+	    assertEquals(check,true);
+	}
+
+	@Test
+	void testUpdateClient() {
+	}
+
+	@Test
+	void testGetClient() {
+	}
+
+	@Test
+	void testGetAllClient() {
+		try {
+			List<ClientBean> check = clientDao.getAllClient();
+			assertEquals(check!=null,true);
+			}catch(Exception e) {
+		//	assertThrows(ProductException.class,()->{
+				clientDao.getAllClient();
+		//	    });
+			}
+	  }
+
+}

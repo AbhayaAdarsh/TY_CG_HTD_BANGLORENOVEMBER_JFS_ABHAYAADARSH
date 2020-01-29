@@ -1,0 +1,33 @@
+package com.capgemini.springrestforestrymanagement.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class CustomerDAOImplTest {
+
+	@Test
+	void testGetAllCustomer() {
+	}
+
+	@Test
+	void testUpdateCustomer() {
+	}
+
+	@Test
+	void testDeleteCustomer() {
+	}
+
+	@Test
+	void testAddCustomer() {
+	}
+
+	@Test
+	void testSearchCustomer() {
+	}
+
+	@Test
+	void testCustomerlogin() {
+	}
+
+}

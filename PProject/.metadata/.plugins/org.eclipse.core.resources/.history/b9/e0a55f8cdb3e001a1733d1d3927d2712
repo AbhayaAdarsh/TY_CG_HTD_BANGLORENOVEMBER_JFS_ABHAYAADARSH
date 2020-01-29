@@ -1,0 +1,10 @@
+package com.capgemini.springrestforestrymanagement.manager;
+
+import com.capgemini.forestrymanagement.springbootdao.ClientDao;
+
+public class ClientDaoManager {
+	
+	public static ClientDao instanceOfClientDaoImpl() {
+		return null;
+	}
+}

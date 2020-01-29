@@ -1,0 +1,52 @@
+package com.capgemini.springrestforestrymanagement.dao;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.capgemini.springrestforestrymanagement.dto.ClientBean;
+
+@SpringBootTest
+class ClientDaoImplTest {
+
+	@Autowired
+	private ClientDao contractDao ;
+	
+	@Test
+	void testAddClient() {
+		ClientBean client=new ClientBean();
+		client.setClientId("CR-05");
+		client.setClientName("OP-00");
+		client.setClientPassword("PO-00");
+		assertTrue(contractDao.addClient(client));
+	}
+
+	@Test
+	void testDeleteClient() {
+		ClientBean client = new ClientBean();
+		client.setClientId("CR-00");
+	//	assertTrue(contractDao.deleteClient(client.getClientId()));
+	}
+
+	@Test
+	void testUpdateClient() {
+		ClientBean client = new ClientBean();
+		client.setClientId("RD-00");
+		assertTrue(contractDao.updateClientId(client.getClientId()));
+	}
+
+	@Test
+	void testGetClient() {
+		ClientBean client = contractDao.getClient("RD-00");
+	    assertNotNull(client);
+	}
+
+	@Test
+	void testGetAllClient() {
+		List<ClientBean> beans = contractDao.getAllClient();
+		assertNotNull(beans);
+	}
+
+}

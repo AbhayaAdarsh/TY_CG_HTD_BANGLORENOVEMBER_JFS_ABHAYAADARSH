@@ -1,0 +1,44 @@
+package com.capgimini.forestmanagentsystem.dto;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name="product")
+public class ProductBean {
+	@Id
+	@Column
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int productId;
+	@Column(nullable=false,unique=true)
+	private String productName;
+	@Column(nullable=false)
+	private double cost;
+	public int getProductId() {
+		return productId;
+	}
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public double getCost() {
+		return cost;
+	}
+	public void setCost(double cost) {
+		this.cost = cost;
+	}
+
+	
+}

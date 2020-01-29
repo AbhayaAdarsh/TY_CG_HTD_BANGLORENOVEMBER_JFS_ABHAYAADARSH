@@ -1,0 +1,25 @@
+package com.capgemini.forestrymanagement.hibernatedao;
+
+import com.capgemini.forestrymanagement.hibernatebean.ProductBean;
+
+
+public class ProductDaoImplTest {
+	ProductBean productBean = null;
+    ProductDaoImpl productDao = null;
+    @BeforeEach
+    void loadDriver() {
+   productDao = new ProductDaoImpl();
+    }
+	public void testAddProduct() {
+		fail("Not yet implemented");
+	}
+
+	public void testModifyProduct() {
+		fail("Not yet implemented");
+	}
+
+	public void testDeleteProduct() {
+		fail("Not yet implemented");
+	}
+
+}

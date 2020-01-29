@@ -1,0 +1,55 @@
+package com.capgemini.forestrymanagement.collectionbean;
+
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class ProductBean implements Serializable {
+	private String productname;
+	private int productid;
+	private String dlvryDate;
+	private String dlvryDay;
+	private int quantity;
+
+	public ProductBean() {
+		super();
+	}
+
+	public int getProductid() {
+		return productid;
+	}
+
+	public void setProductid(int productid) {
+		this.productid = productid;
+	}
+
+	public String getProductName() {
+		return productname;
+	}
+
+	public void setProductName(String productname) {
+		this.productname = productname;
+	}
+
+	public String getDeliveryDate() {
+		return dlvryDate;
+	}
+
+	public void setDeliveryDate(String dlvryDate) {
+		this.dlvryDate = dlvryDate;
+	}
+
+	public String getDeliveryDay() {
+		return dlvryDay;
+	}
+
+	public void setDeliveryDay(String dlvryDay) {
+		this.dlvryDay = dlvryDay;
+	}
+
+	
+
+	@Override
+	public String toString() {
+		return "ProductBean [productname=" + productname + ", productid=" + productid + "]";
+	}
+}

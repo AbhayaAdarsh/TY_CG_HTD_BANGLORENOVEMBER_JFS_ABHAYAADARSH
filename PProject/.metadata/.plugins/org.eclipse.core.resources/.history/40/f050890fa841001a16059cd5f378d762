@@ -1,0 +1,40 @@
+package com.capgemini.springrestforestrymanagement.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import com.capgemini.springrestforestrymanagement.dto.CustomerBean;
+import com.capgemini.springrestforestrymanagement.dto.LandsBean;
+
+class LandsDAOImplTest {
+
+	@Test
+	void testGetAllLands() {
+	}
+
+	@Test
+	void testUpdateLands() {
+	}
+
+	@Test
+	void testDeleteLands() {
+	}
+
+	@Test
+	void testAddLands() {
+		LandsBean bean=new LandsBean();
+		bean.setLandId(10);
+		bean.setLandSize(10);
+		//bean.setLandResources("54");
+		bean.setLandLocation("Bangalore");
+		Assertions.assertTrue(true);
+		Assertions.assertNotNull(bean);
+	}
+
+	@Test
+	void testSearchLands() {
+	}
+
+}

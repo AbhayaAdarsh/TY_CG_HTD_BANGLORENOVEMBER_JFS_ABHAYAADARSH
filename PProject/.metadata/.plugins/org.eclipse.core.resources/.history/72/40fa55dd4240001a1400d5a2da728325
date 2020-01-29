@@ -1,0 +1,19 @@
+package com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcmanager;
+
+import com.capgemini.forestrymanagement.jdbcdao.ClientDao;
+import com.capgemini.forestrymanagement.jdbcdao.ClientDaoImpl;
+import com.capgemini.forestrymanagement.jdbcservice.ClientServices;
+import com.capgemini.forestrymanagement.jdbcservice.ClientServiceImpl;
+
+public class ClientDaoManager {
+
+	public static ClientDao instanceOfClientDaoImpl() {
+		ClientDao dao = new ClientDaoImpl();
+		return dao;
+	}
+
+	public static ClientServices instanceOfClientServiceImpl() {
+		ClientServiceImpl services = new ClientServiceImpl();
+		return services;
+	}
+}

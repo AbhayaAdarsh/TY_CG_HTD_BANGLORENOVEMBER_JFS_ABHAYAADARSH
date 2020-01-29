@@ -1,0 +1,65 @@
+package com.capgimini.forestmanagentsystem.dao;
+
+import static org.junit.Assert.assertTrue;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.capgimini.forestmanagentsystem.dto.CustomerBean;
+
+
+@SpringBootTest
+class CustomerDAOImplTest {
+
+	@Autowired
+	private CustomerDAO customerDao;
+	
+	@Test
+	void testAddCustomer() {
+		 CustomerBean bean = new CustomerBean();
+		  bean.setCustomerId(11);
+			bean.setCustomerName("jyo");
+			bean.setAddress1("tpt");
+			bean.setAddress2("bnglr");
+			bean.setTown("sdf");
+			bean.setPostalCode(787879);
+			bean.setEmail("jyo@gmail.com");
+			bean.setTelephoneNo(987654987);
+			assertTrue(customerDao.addCustomer(bean));
+	}
+
+	@Test
+	void testGetCustomer() {
+		CustomerBean customer = customerDao.getCustomer(5);
+	    assertNotNull(customer);
+	}
+
+	@Test
+	void testGetAllCustomers() {
+		List<CustomerBean> beans = customerDao.getAllCustomer();
+		assertNotNull(beans);
+	}
+
+	@Test
+	void testUpdateCustomer() {
+		CustomerBean bean1 = new CustomerBean();
+		bean1.setCustomerId(5);
+		bean1.setCustomerName("kavitha");
+		bean1.setAddress1("tpt");
+		bean1.setAddress2("bnglr");
+		bean1.setTown("sdf");
+		bean1.setPostalCode(787879);
+		bean1.setEmail("m@gmail.com");
+		bean1.setTelephoneNo(987654987);
+	    assertTrue(customerDao.updateCustomer(bean1));
+	}
+
+	@Test
+	void testDeleteCustomer() {
+		CustomerBean customer = new CustomerBean();
+		customer.setCustomerId(9);
+	    assertTrue(customerDao.deleteCustomer(customer.getCustomerId()));
+	}
+
+}

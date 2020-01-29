@@ -1,0 +1,19 @@
+package com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcmanager;
+
+import com.capgemini.forestrymanagement.jdbcdao.ContractorDao;
+import com.capgemini.forestrymanagement.jdbcdao.ContractorDaoImpl;
+import com.capgemini.forestrymanagement.jdbcservice.ContractorServices;
+import com.capgemini.forestrymanagement.jdbcservice.ContractorServiceImpl;
+
+public class ContractorDaoManager {
+
+	public static ContractorDao instanceOfContractorDaoImpl() {
+		ContractorDao dao = new ContractorDaoImpl();
+		return dao;
+	}
+
+	public static ContractorServices instanceOfContractorServiceImpl() {
+		ContractorServiceImpl services = new ContractorServiceImpl();
+		return services;
+	}
+}

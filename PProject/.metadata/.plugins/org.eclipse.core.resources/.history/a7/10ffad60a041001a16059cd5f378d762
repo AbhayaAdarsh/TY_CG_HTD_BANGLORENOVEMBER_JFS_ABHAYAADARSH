@@ -1,0 +1,39 @@
+package com.capgemini.springrestforestrymanagement.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ContractorDAOImplTest {
+
+	@Test
+	void testGetAllContarctor() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAllContarctorInt() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateContarctor() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeletecontarctor() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testAddContarctor() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testSearchContarctor() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,47 @@
+package com.capgemini.forestrymanagement.collectiondao;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
+import com.capgemini.forestrymanagement.collectionbean.LandBean;
+import com.capgemini.forestrymanagement.collectionbean.LandBean;
+
+class LandDaoImplTest {
+	LandBean contract = new LandBean();
+	LandDaoImpl dao = new LandDaoImpl();
+	@Test
+	void testAddLand() {
+		LandBean land=new LandBean();
+		land.setLandNo(102);
+		land.setLandDetails("HSR Layout,Bangalore");
+		land.setLandlordName("Prince");
+		
+		try {
+			boolean flag = dao.addLand(land);
+			assertEquals(flag, true);
+		} catch (Exception e) {
+			//			assertThrows(InvalidDataException.class, () -> {
+			dao.addLand(land);
+			//	});
+		}
+	}
+
+	@Test
+	void testDeleteLand() {
+		
+	}
+
+	@Test
+	void testModifyLand() {
+	}
+
+	@Test
+	void testDisplayLand() {
+	}
+
+	@Test
+	void testGetAllInfoLand() {
+	}
+
+}

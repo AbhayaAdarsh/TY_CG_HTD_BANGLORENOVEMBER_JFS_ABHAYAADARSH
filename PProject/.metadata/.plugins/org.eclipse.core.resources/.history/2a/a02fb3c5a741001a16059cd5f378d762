@@ -1,0 +1,29 @@
+package com.capgemini.springrestforestrymanagement.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class LandsDAOImplTest {
+
+	@Test
+	void testGetAllLands() {
+	}
+
+	@Test
+	void testUpdateLands() {
+	}
+
+	@Test
+	void testDeleteLands() {
+	}
+
+	@Test
+	void testAddLands() {
+	}
+
+	@Test
+	void testSearchLands() {
+	}
+
+}

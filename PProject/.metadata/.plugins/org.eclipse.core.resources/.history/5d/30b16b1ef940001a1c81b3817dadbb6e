@@ -1,0 +1,17 @@
+package com.capgemini.springrestforestrymanagement.dao;
+
+import java.util.List;
+
+import com.capgemini.springrestforestrymanagement.dto.SchedularBean;
+
+public interface SchedularDao {
+	public boolean register(SchedularBean bean);
+
+	public boolean updateSchedular(SchedularBean bean);
+
+	public boolean deleteSchedular(int schedularId);
+
+	public List<SchedularBean> getAllSchedular();
+
+	public SchedularBean getSchedularBean(int schedulerId);
+}

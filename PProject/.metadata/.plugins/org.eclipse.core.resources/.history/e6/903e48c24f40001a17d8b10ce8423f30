@@ -1,0 +1,23 @@
+package com.capgemini.forestrymanagementsystem.jdbcforestrysystem.jdbcdao;
+
+import junit.framework.TestCase;
+
+public class SchedularDaoImplTest extends TestCase {
+
+	public void testSchedularDaoImpl() {
+		fail("Not yet implemented");
+	}
+
+	public void testAddSchedular() {
+		fail("Not yet implemented");
+	}
+
+	public void testDeleteSchedular() {
+		fail("Not yet implemented");
+	}
+
+	public void testModifySchedular() {
+		fail("Not yet implemented");
+	}
+
+}

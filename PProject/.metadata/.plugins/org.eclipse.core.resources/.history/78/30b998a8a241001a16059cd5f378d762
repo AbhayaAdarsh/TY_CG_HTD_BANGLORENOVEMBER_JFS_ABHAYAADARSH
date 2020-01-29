@@ -1,0 +1,33 @@
+package com.capgemini.springrestforestrymanagement.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ContractorDAOImplTest {
+
+	@Test
+	void testGetAllContarctor() {
+	}
+
+	@Test
+	void testGetAllContarctorInt() {
+	}
+
+	@Test
+	void testUpdateContarctor() {
+	}
+
+	@Test
+	void testDeletecontarctor() {
+	}
+
+	@Test
+	void testAddContarctor() {
+	}
+
+	@Test
+	void testSearchContarctor() {
+	}
+
+}

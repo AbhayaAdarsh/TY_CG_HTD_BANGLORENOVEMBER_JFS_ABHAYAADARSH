@@ -1,0 +1,21 @@
+package com.capgemini.forestrymanagement.hibernatedao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class SchedularDaoImplTest {
+
+	@Test
+	void testAddSchedular() {
+	}
+
+	@Test
+	void testModifySchedular() {
+	}
+
+	@Test
+	void testDeleteSchedular() {
+	}
+
+}

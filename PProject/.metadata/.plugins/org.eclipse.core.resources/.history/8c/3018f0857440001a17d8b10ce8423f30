@@ -1,0 +1,29 @@
+package com.capgemini.forestrymanagement.collectiondao;
+
+import org.junit.jupiter.api.Test;
+
+class LandDaoImplTest {
+
+	@Test
+	void testAddLand() {
+		
+	}
+
+	@Test
+	void testDeleteLand() {
+		
+	}
+
+	@Test
+	void testModifyLand() {
+	}
+
+	@Test
+	void testDisplayLand() {
+	}
+
+	@Test
+	void testGetAllInfoLand() {
+	}
+
+}

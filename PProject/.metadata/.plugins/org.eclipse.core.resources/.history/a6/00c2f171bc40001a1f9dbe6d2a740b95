@@ -1,0 +1,47 @@
+package com.capgemini.forestrymanagement.collectiondao;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import com.capgemini.forestrymanagement.collectionbean.ProductBean;
+
+class ProductDaoImplTest {
+	ProductDaoImpl dao = new ProductDaoImpl();
+	@Test
+	void testAddProduct() {
+		ProductBean product=new ProductBean();
+        product.setProductid(102);
+		product.setProductName("iPhone 11 pro");
+		product.setQuantity(11);
+		try {
+			boolean flag = dao.addProduct(product);
+			assertEquals(flag, true);
+		} catch (Exception e) {
+			//			assertThrows(InvalidDataException.class, () -> {
+			dao.addProduct(product);
+			//	});
+		}
+	}
+
+	@Test
+	void testDeleteProduct() {
+		ProductBean product=new ProductBean();
+		product.setProductid(102);
+		try {
+			boolean flag = dao.deleteProduct(product.getProductid());
+			assertEquals(flag, false);
+		} catch (Exception e) {
+			//			assertThrows(InvalidDataException.class, () -> {
+			dao.deleteProduct(product.getProductid());
+			//			});
+		}	
+	}
+
+	@Test
+	void testModifyProduct() {
+	}
+
+	@Test
+	void testToString() {
+	}
+
+}

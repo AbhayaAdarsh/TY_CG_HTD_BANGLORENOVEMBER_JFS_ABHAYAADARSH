@@ -1,0 +1,21 @@
+package com.capgemini.forestrymanagement.springbootservice;
+
+import java.util.List;
+import com.capgemini.forestrymanagement.springbootdto.SchedularBean;
+
+public interface SchedularServices {
+
+	//public boolean updateSchedular(int landno, SchedularBean bean);
+
+	public boolean deleteSchedular(int landno);
+
+	public List<SchedularBean> getAllSchedular();
+
+	public boolean registerSchedular(SchedularBean bean);
+
+	public SchedularBean getSchedularBean(int schedulerId);
+
+	public boolean updateSchedular(SchedularBean bean);
+
+	boolean register(SchedularBean bean);	
+}

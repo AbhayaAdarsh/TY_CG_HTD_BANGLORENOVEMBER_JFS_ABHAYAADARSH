@@ -1,0 +1,45 @@
+package com.capgimini.forestmanagentsystem.dao;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.capgimini.forestmanagentsystem.dto.ContractBean;
+
+@SpringBootTest
+class ContractDAOImplTest {
+
+	@Autowired
+	private ContractDAO contractDao ;
+	
+	@Test
+	void testAddContract() {
+		ContractBean bean=new ContractBean();
+		bean.setContractNo(01);
+		bean.setCustomerId(02);
+		bean.setHaulierId(03);
+		bean.setProductId(04);
+		bean.setDeliveryDate("14/3/2020");
+		bean.setQuantity(05);
+		assertTrue(contractDao.addContract(bean));
+	}
+
+	@Test
+	void testGetAllContracts() {
+		List<ContractBean> beans = contractDao.getAllContracts();
+		assertNotNull(beans);
+	}
+
+	@Test
+	void testDeleteContract() {
+		ContractBean contract = new ContractBean();
+		contract.setContractNo(11);
+		assertTrue(contractDao.deleteContract(contract.getContractNo()));
+	}
+
+}

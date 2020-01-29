@@ -1,0 +1,65 @@
+package com.capgimini.forestmanagentsystem.dao;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import java.util.List;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import com.capgimini.forestmanagentsystem.dto.HaulierBean;
+
+
+@SpringBootTest
+class HaulierDAOImplTest {
+
+	@Autowired
+	private HaulierDAO HauilerDao;
+	
+//	@Test
+//	void testAddHauiler() {
+//		HaulierBean bean = new HaulierBean();
+//		  bean.setHaulierId(11);
+//			bean.setHaulierName("jyo");
+//			bean.setAddress1("tpt");
+//			bean.setAddress2("bnglr");
+//			bean.setTown("sdf");
+//			bean.setPostalCode(787879);
+//			bean.setEmail("jyo@gmail.com");
+//			bean.setTelephone(987654987);
+//			assertTrue(HauilerDao.addHauiler(bean));
+//	}
+
+//	@Test
+//	void testGetHaulier() {
+//		HaulierBean Hauiler = HauilerDao.getHaulier(5);
+//	    assertNotNull(Hauiler);
+//	}
+
+	@Test
+	void testGetAllHauliers() {
+		List<HaulierBean> beans = HauilerDao.getAllHauliers();
+		assertNotNull(beans);
+	}
+
+//	@Test
+//	void testUpdateHaulier() {
+//		HaulierBean bean1 = new HaulierBean();
+//		bean1.setHaulierId(5);
+//		bean1.setHaulierName("kavitha");
+//		bean1.setAddress1("tpt");
+//		bean1.setAddress2("bnglr");
+//		bean1.setTown("sdf");
+//		bean1.setPostalCode(787879);
+//		bean1.setEmail("m@gmail.com");
+//		bean1.setTelephone(987654987);
+//	    assertTrue(HauilerDao.updateHaulier(bean1));
+//	}
+//
+//	@Test
+//	void testDeleteHaulier() {
+//		HaulierBean Hauiler = new HaulierBean();
+//		Hauiler.setHaulierId(9);
+//	    assertTrue(HauilerDao.deleteHaulier(Hauiler.getHaulierId()));
+//	}
+
+}

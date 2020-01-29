@@ -1,0 +1,85 @@
+package com.capgemini.forestrymanagement.collectionbean;
+
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class ProductBean implements Serializable {
+	private String productname;
+	private int productid;
+	private String deliveryDate;
+	private String deliveryDay;
+	private int quantity;
+
+	public ProductBean() {
+		super();
+	}
+
+	public int getProductid() {
+		return productid;
+	}
+
+	public void setProductid(int productid) {
+		this.productid = productid;
+	}
+
+	public String getProductName() {
+		return productname;
+	}
+
+	public void setProductName(String productname) {
+		this.productname = productname;
+	}
+	
+	public String getDeliveryDate() {
+		return deliveryDate;
+	}
+
+	public void setDeliveryDate(String deliveryDate) {
+		this.deliveryDate = deliveryDate;
+	}
+
+	public String getDeliveryDay() {
+		return deliveryDay;
+	}
+
+	public void setDeliveryDay(String deliveryDay) {
+		this.deliveryDay = deliveryDay;
+	}
+
+	public String getProductname() {
+		return productname;
+	}
+
+	public void setProductname(String productname) {
+		this.productname = productname;
+	}
+
+	public String getDlvryDate() {
+		return dlvryDate;
+	}
+
+	public void setDlvryDate(String dlvryDate) {
+		this.dlvryDate = dlvryDate;
+	}
+
+	public String getDlvryDay() {
+		return dlvryDay;
+	}
+
+	public void setDlvryDay(String dlvryDay) {
+		this.dlvryDay = dlvryDay;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductBean [productname=" + productname + ", productid=" + productid + "]";
+	}
+}

@@ -1,0 +1,11 @@
+package com.capgemini.springrestforestrymanagement.manager;
+
+import com.capgemini.springrestforestrymanagement.dao.AdminDao;
+
+public class AdminDaoManager {
+
+	public static AdminDao instanceOfAdminDaoImpl() {
+		return null;
+	}
+
+} 

@@ -1,0 +1,39 @@
+package com.capgimini.forestmanagentsystem.dto;
+
+import java.util.List;
+
+import lombok.Data;
+
+public class UserResponse {
+	private int status;
+	private String message;
+	private String description;
+	private List<UserBean> manager;
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public List<UserBean> getManager() {
+		return manager;
+	}
+	public void setManager(List<UserBean> manager) {
+		this.manager = manager;
+	}
+	
+	 
+
+}

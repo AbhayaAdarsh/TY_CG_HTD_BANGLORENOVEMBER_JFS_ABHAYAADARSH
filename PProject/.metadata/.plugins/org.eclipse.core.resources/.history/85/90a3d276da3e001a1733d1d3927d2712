@@ -1,0 +1,96 @@
+package com.capgemini.forestrymanagement.springbootdao;
+
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.TypedQuery;
+import org.springframework.stereotype.Repository;
+import com.capgemini.forestrymanagement.springbootdto.CustomerBean;
+import com.capgemini.forestrymanagement.springbootexception.CustomerException;
+
+@Repository
+public class CustomerDaoImpl implements CustomerDao{
+
+	@PersistenceUnit
+	private EntityManagerFactory factory;
+	
+	@Override
+	public boolean addCustomer(CustomerBean bean) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		CustomerBean customerBean = new CustomerBean();
+		customerBean.setCustomerId(bean.getCustomerId());
+		customerBean.setCustomerName(bean.getCustomerName());
+		customerBean.setCustomerPassword(bean.getCustomerPassword());
+		transaction.begin();
+		try {
+			manager.persist(customerBean);
+			transaction.commit();
+			return true;
+		} catch (Exception e) {
+			throw new CustomerException("Customer already exists");
+		}
+	}
+
+	@Override
+	public boolean deleteCustomer(int customerId) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+		try {
+		CustomerBean bean = manager.find(CustomerBean.class, customerId);
+		if (bean != null) {
+			manager.remove(bean);
+			transaction.commit();
+			return true;
+		}
+		return false;
+		} catch (Exception e) {
+			throw new CustomerException("Customer already exists");
+		}
+	}
+
+	@Override
+	public boolean updateCustomer(int customerId, CustomerBean bean) {
+		EntityManager manager1 = factory.createEntityManager();
+		EntityTransaction transaction = manager1.getTransaction();
+		transaction.begin();
+		try {
+		CustomerBean bean1 = manager1.find(CustomerBean.class, customerId);
+		bean1.setCustomerName(bean1.getCustomerName());
+		transaction.commit();
+		return true;
+	    }catch (Exception e) {
+		throw new CustomerException("Customer not Updated");
+	  }
+	}
+
+	@Override
+	public CustomerBean getCustomer(int customerId) {
+		String jpql = "from CustomerBean where customerId=:customerId";
+		EntityManager manager = factory.createEntityManager();
+		TypedQuery<CustomerBean> query = manager.createQuery(jpql, CustomerBean.class);
+		query.setParameter("customerId", customerId);
+		try {
+			return query.getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CustomerException("Customer not found");
+		}
+	}
+
+	@Override
+	public List<CustomerBean> getAllCustomer() {
+		try {
+			String jpql = "from CustomerBean";
+			EntityManager manager = factory.createEntityManager();
+			TypedQuery<CustomerBean> query = manager.createQuery(jpql, CustomerBean.class);
+			return query.getResultList();
+		}catch (Exception e) {
+			throw new CustomerException("Customer not found");
+		}
+	}
+
+}

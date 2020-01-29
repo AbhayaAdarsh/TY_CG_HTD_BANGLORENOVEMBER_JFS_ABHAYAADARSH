@@ -1,0 +1,17 @@
+package com.capgemini.springrestforestrymanagement.service;
+
+import java.util.List;
+
+import com.capgemini.springrestforestrymanagement.dto.SchedularBean;
+import com.capgemini.springrestforestrymanagement.exception.SchedularException;
+
+public interface SchedularServices {
+	public SchedularBean login(int schedulerId,String password);
+	public boolean deleteSchedular(int schedulerId)throws SchedularException;
+	public List<SchedularBean> getAllSchedular();
+	public SchedularBean getSchedularBean(int schedulerId);
+	public boolean getAllSchedular(SchedularBean bean);
+	public boolean updateSchedular(Object schedulerId, SchedularBean bean1);
+	public boolean registerSchedular(SchedularBean bean);
+	public boolean updateSchedular(SchedularBean bean);
+}

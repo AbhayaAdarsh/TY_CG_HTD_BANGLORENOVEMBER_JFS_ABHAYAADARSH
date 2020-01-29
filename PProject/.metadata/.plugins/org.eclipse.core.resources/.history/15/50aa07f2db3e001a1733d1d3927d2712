@@ -1,0 +1,11 @@
+package com.capgemini.springrestforestrymanagement.manager;
+
+import com.capgemini.forestrymanagement.springbootdao.ProductDao;
+
+public class ProductDaoManager {
+
+	public static ProductDao instanceOfProductDaoImpl() {
+		return null;
+	}
+
+}
