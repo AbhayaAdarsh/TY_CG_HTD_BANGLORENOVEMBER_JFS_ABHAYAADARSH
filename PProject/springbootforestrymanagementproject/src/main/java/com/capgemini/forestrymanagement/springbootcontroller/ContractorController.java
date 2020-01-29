@@ -1,0 +1,100 @@
+package com.capgemini.forestrymanagement.springbootcontroller;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import com.capgemini.forestrymanagement.springbootdto.ContractorBean;
+import com.capgemini.forestrymanagement.springbootdto.ContractorResponce;
+import com.capgemini.forestrymanagement.springbootexception.ContractorException;
+import com.capgemini.forestrymanagement.springbootservice.ContractorServices;
+
+@RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*", allowCredentials = "true")
+public class ContractorController {
+	@Autowired
+	private ContractorServices service;
+	
+	@PostMapping(path = "/addContractor", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ContractorResponce addContractor(@RequestBody ContractorBean bean) {
+		ContractorResponce responce = new ContractorResponce();
+		if (service.addContractor(bean)) {
+			responce.setStatusCode(201);
+			responce.setMessage("Success");
+			responce.setDescription("Contractor Registered.");
+		} else {
+			responce.setStatusCode(401);
+			responce.setMessage("Failure");
+			responce.setDescription("Contractor already exsist");
+		}
+		return responce;
+	}
+	
+	@DeleteMapping(path = "/deleteContractor", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ContractorResponce deleteContractor(@PathVariable("contractorId") int contractorId) throws ContractorException {
+		ContractorResponce responce = new ContractorResponce();
+		service.deleteContractor(contractorId);
+		responce.setStatusCode(201);
+		responce.setMessage("Success");
+		responce.setDescription("Contractor Details Deleted");
+		return responce;
+	}
+	
+	@PutMapping(path = "/updateContractor", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ContractorResponce updateContractor(@RequestBody ContractorBean bean) {
+		ContractorResponce responce = new ContractorResponce();
+		ContractorBean beans = new ContractorBean();
+		beans.setContractorId(bean.getContractorId());
+		beans.setContractorName(bean.getContractorName());
+		if (service.updateContractor(bean)) {
+			responce.setStatusCode(201);
+			responce.setMessage("Success");
+			responce.setDescription("Contractor Updated Successfully....");
+		} else {
+			responce.setStatusCode(401);
+			responce.setMessage("Failure");
+			responce.setDescription("Unable to change number.");
+		}
+		return responce;
+	}
+	
+	@GetMapping(path = "/getContractor", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ContractorResponce getContractor(@RequestParam("contractorId") int contractorId) {
+		ContractorResponce responce = new ContractorResponce();
+		List<ContractorBean> beans = service.getContractor(contractorId);
+		if (beans.isEmpty()) {
+			responce.setStatusCode(201);
+			responce.setMessage("Success");
+			responce.setDescription("Contractor search Successful");
+		} else {
+			responce.setStatusCode(401);
+			responce.setMessage("Failure");
+			responce.setDescription("Data not Found!!! ");
+		}
+		return responce;
+	}
+
+	@GetMapping(path = "/getAllContractor", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ContractorResponce getAllLand() {
+		ContractorResponce responce = new ContractorResponce();
+		List<ContractorBean> beans = service.getAllContractor();
+		if (beans != null) {
+			responce.setStatusCode(201);
+			responce.setMessage("Success");
+			responce.setDescription("All Contractor Found.");
+		} else {
+			responce.setStatusCode(401);
+			responce.setMessage("Failure");
+			responce.setDescription("Data not Found!!! ");
+		}
+		return responce;
+	}	
+}

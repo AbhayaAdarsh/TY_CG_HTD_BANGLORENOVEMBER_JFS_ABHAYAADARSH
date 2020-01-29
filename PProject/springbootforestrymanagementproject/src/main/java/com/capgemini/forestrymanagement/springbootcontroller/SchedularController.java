@@ -1,0 +1,99 @@
+package com.capgemini.forestrymanagement.springbootcontroller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.capgemini.forestrymanagement.springbootdto.ProductResponce;
+import com.capgemini.forestrymanagement.springbootdto.SchedularBean;
+import com.capgemini.forestrymanagement.springbootdto.SchedularResponce;
+import com.capgemini.forestrymanagement.springbootexception.SchedularException;
+import com.capgemini.forestrymanagement.springbootservice.SchedularServices;
+
+public class SchedularController {
+
+	@Autowired
+	private SchedularServices service;
+
+	@PostMapping(path = "/registerSchedular", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public SchedularResponce addProduct(@RequestBody SchedularBean bean) {
+		SchedularResponce responce = new SchedularResponce();
+		if (service.registerSchedular(bean)) {
+			responce.setStatusCode(201);
+			responce.setMessage("Success");
+			responce.setDescription("Schedular Registered.");
+		} else {
+			responce.setStatusCode(401);
+			responce.setMessage("Failure");
+			responce.setDescription("Schedular already exsist");
+		}
+		return responce;
+	}
+	@GetMapping(path = "/getschedular", produces = MediaType.APPLICATION_JSON_VALUE)
+	public SchedularResponce getSchedular(@RequestParam("schedulerId") int schedulerId) {
+		SchedularResponce responce = new SchedularResponce();
+		SchedularBean beans = service.getSchedularBean(schedulerId);
+		if (beans == null) {
+			responce.setStatusCode(201);
+			responce.setMessage("Success");
+			responce.setDescription("Scheduler Search Successful");
+
+		} else {
+			responce.setStatusCode(401);
+			responce.setMessage("Failure");
+			responce.setDescription("Data not Found!!! ");
+		}
+		return responce;
+	}
+
+	@GetMapping(path = "/getAllSchedular", produces = MediaType.APPLICATION_JSON_VALUE)
+	public SchedularResponce getAllProduct() {
+		SchedularResponce responce = new SchedularResponce();
+		List<SchedularBean> beans = service.getAllSchedular();
+		if (beans == null) {
+			responce.setStatusCode(201);
+			responce.setMessage("Success");
+			responce.setDescription("All Product Found.");
+
+		} else {
+			responce.setStatusCode(401);
+			responce.setMessage("Failure");
+			responce.setDescription("Data not Found!!! ");
+		}
+		return responce;
+	}
+
+	@PutMapping(path = "/updateSchedular", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ProductResponce updateSchedular(@RequestBody SchedularBean bean) {
+		ProductResponce responce = new ProductResponce();
+		if (service.updateSchedular(bean)) {
+			responce.setStatusCode(201);
+			responce.setMessage("Success");
+			responce.setDescription("Schedular Updated Successfully....");
+		} else {
+			responce.setStatusCode(401);
+			responce.setMessage("Failure");
+			responce.setDescription("Unable to change name.");
+		}
+		return responce;
+	}
+
+	@DeleteMapping(path = "/deleteschedular/{schedulerId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public SchedularResponce deleteScheduler(@PathVariable("schedulerId") int schedulerId) throws SchedularException {
+		SchedularResponce responce = new SchedularResponce();
+		service.getSchedularBean(schedulerId);
+		responce.setStatusCode(201);
+		responce.setMessage("Success");
+		responce.setDescription("Schedular Details Deleted");
+		return responce;
+	}
+
+}

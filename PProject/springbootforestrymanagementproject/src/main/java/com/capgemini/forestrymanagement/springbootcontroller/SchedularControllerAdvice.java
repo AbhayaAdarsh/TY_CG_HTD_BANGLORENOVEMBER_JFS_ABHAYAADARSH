@@ -1,0 +1,18 @@
+package com.capgemini.forestrymanagement.springbootcontroller;
+
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import com.capgemini.forestrymanagement.springbootdto.SchedularResponce;
+import com.capgemini.forestrymanagement.springbootexception.SchedularException;
+
+public class SchedularControllerAdvice {
+
+	@ExceptionHandler(SchedularException.class)
+	public SchedularResponce handleSchedularException(SchedularException e) {
+		SchedularResponce schedularResponce = new SchedularResponce();
+		schedularResponce.setStatusCode(501);
+		schedularResponce.setMessage("Exception");
+		schedularResponce.setDescription(e.getMessage());
+		return schedularResponce;
+	}
+}
