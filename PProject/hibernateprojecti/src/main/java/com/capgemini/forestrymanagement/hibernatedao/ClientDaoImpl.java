@@ -1,0 +1,111 @@
+package com.capgemini.forestrymanagement.hibernatedao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+import com.capgemini.forestrymanagement.hibernatebean.ClientBean;
+
+public class ClientDaoImpl implements ClientDao {
+	EntityManagerFactory factory = Persistence.createEntityManagerFactory("Test");
+
+	@Override
+	public boolean addClient(ClientBean bean) {
+		boolean isAdded = false;
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction;
+		try {
+			transaction = manager.getTransaction();
+			transaction.begin();
+			manager.persist(bean);
+			transaction.commit();
+			isAdded = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		manager.close();
+		return isAdded;
+	}
+
+	@Override
+	public boolean deleteClient(int clientid) {
+		boolean isDeleted = false;
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = null;
+		ClientBean bean = manager.find(ClientBean.class, clientid);
+		if (bean != null) {
+			transaction = manager.getTransaction();
+			transaction.begin();
+			manager.remove(bean);
+			transaction.commit();
+			isDeleted = true;
+		}
+		manager.close();
+		return isDeleted;
+	}
+
+	@Override
+	public boolean updateClient(ClientBean bean, int clientid) {
+		boolean isUpdated = false;
+		EntityManager manager = factory.createEntityManager();
+		ClientBean bean1 = manager.find(ClientBean.class, clientid);
+		EntityTransaction transaction = manager.getTransaction();
+		if (bean1 != null) {
+			try {
+				transaction.begin();
+				int clientid1 = bean.getClientId();
+				if (clientid1 > 0) {
+					bean1.setClientId(clientid);
+				}
+				String clientName = bean.getClientName().trim();
+				if (clientName != null && clientName.isEmpty()) {
+					bean1.setClientName(clientName);
+				}
+				String streetAddress1 = bean.getStreetAddress1().trim();
+				if (streetAddress1 != null && streetAddress1.isEmpty()) {
+					bean1.setStreetAddress1(streetAddress1);
+				}
+				String streetAddress2 = bean.getStreetAddress2().trim();
+				if (streetAddress2 != null && streetAddress2.isEmpty()) {
+					bean1.setStreetAddress2(streetAddress2);
+				}
+				String town = bean.gettown().trim();
+				if (town != null && town.isEmpty()) {
+					bean1.settown(streetAddress1);
+				}
+				int postalCode = bean.getPostalCode();
+				if (postalCode > 0) {
+					bean1.setPostalCode(postalCode);
+				}
+				String email = bean.getemail().trim();
+				if (email != null && email.isEmpty()) {
+					bean1.setemail(email);
+				}
+				String telephoneNum = bean.gettelephoneNum().trim();
+				if (telephoneNum != null && telephoneNum.isEmpty()) {
+					bean1.settelephoneNum(telephoneNum);
+				}
+				transaction.commit();
+				isUpdated = true;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		manager.close();
+		return isUpdated;
+	}
+
+	@Override
+	public List<ClientBean> getAllClient() {
+		EntityManager manager = factory.createEntityManager();
+		String jpql = "from ClientBean";
+		Query query = manager.createQuery(jpql);
+		@SuppressWarnings("unchecked") 
+		List<ClientBean> list = query.getResultList();
+		return list;
+	}
+}

@@ -1,0 +1,42 @@
+package com.capgemini.forestrymanagement.hibernatecontroller;
+
+import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		try {
+			while (true) {
+				System.out.println("1.ADMIN");
+				System.out.println("2.CLIENT");
+				System.out.println("3.SCHEDULAR");
+				int option = sc.nextInt();
+				switch (option) {
+				case 1:
+					Admin.admin();
+				case 2:
+					Client.client();
+					break;
+				case 3:
+					Schedular.schedular();
+					break;
+				default:
+					System.out.println("Invalid option " + option);
+					break;
+				}
+			}
+		}catch (InputMismatchException ime) {
+			System.err.println("Invalid Input!!");
+		}
+		catch (NoSuchElementException ns) {
+			System.err.println("Try Again");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sc.close();
+		}
+	}
+}

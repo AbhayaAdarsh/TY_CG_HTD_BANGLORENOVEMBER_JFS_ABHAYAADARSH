@@ -1,0 +1,49 @@
+package com.capgemini.forestrymanagement.hibernatebean;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name = "Admin")
+public class AdminBean {
+	@Id
+	@GeneratedValue
+	@Column(nullable = false)
+	private int adminId;
+	@Column(nullable = false)
+	private String adminName;
+	@Column(nullable = false)
+	private String password;
+
+	public void setPassword(Object password2) {
+		// TODO Auto-generated method stub
+		
+	}
+	public Object getAdminName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void setAdminName(Object adminName2) {
+		// TODO Auto-generated method stub
+		
+	}
+	public static Object getAdminId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public Object getPassword() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public static void admin() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+}
